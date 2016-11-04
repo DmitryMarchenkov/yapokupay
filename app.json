@@ -1,0 +1,10 @@
+{
+  "name": "Ya Pokupay",
+  "description": "Heroku Java Web Application Using Embedded Tomcat",
+  "repository": "https://git.heroku.com/yapokupay.git",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Tomcat-logo.svg",
+  "keywords": [
+    "java",
+    "tomcat"
+  ]
+}

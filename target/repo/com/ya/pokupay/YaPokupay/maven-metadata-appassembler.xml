@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.ya.pokupay</groupId>
+  <artifactId>YaPokupay</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-BUILD-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20161104152603</lastUpdated>
+  </versioning>
+</metadata>

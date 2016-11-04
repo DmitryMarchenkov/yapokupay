@@ -1,0 +1,117 @@
+body {
+    background-color: #cccccc;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.visible {
+    display: block;
+}
+
+.unvisible {
+    display: block;
+}
+
+#navbar {
+    background-color: rgba(0,174,75,.25);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 210px;
+    font: 700 14px/26px nexa,sans-serif;
+    z-index: 999;
+}
+
+#logo {
+    width: 200px;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+#menu {
+    margin: 150px 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menu li {
+    border-top: 1px solid rgba(255,255,255,.1);
+    height: 50px;
+}
+
+.nav_menu {
+    position: relative;
+    padding: 12px 0 9px 60px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    opacity: .5;
+    display: block;
+    font-size: 16px;
+}
+
+#navbar_bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.phone :first-child {
+    color: #4cae4c;
+}
+.phone :last-child {
+    color: #0bd9ec;
+}
+
+.copyright {
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,.1);
+    font-size: 12px;
+    color: #fff;
+    color: rgba(255,255,255,.5);
+}
+
+
+.pg_home {
+    background-image: url("/resources/images/bg-home.jpg");
+}
+
+.pg_about {
+    background-image: url("/resources/images/bg-about.jpg");
+}
+
+.pg_products {
+    background-image: url("/resources/images/bg-products.jpg");
+}
+
+.pg_contacts {
+    background-image: url("/resources/images/bg-contacts.jpg");
+}
+
+#product_table {
+    color: wheat;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+
+    height: 100%;
+    padding: 0 0 0 210px;
+    background-position: center 0;
+    background-size: cover;
+}
+
+.inner-page {
+    position: relative;
+    height: 100%;
+    padding-top: 70px;
+    overflow: auto;
+}

@@ -71,7 +71,7 @@
 
 	<div class="pg_contacts page">
 		<div class="inner-page">
-
+			CONTACT PAGE
 		</div>
 	</div>
 

@@ -52,7 +52,7 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.ya.pokupay.model.Product</beans:value>
+				<beans:value>com.ya.pokupay.model.Advert</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -64,13 +64,13 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="productDAO" class="com.ya.pokupay.dao.ProductDAOImpl">
+
+	<beans:bean id="advertDAO" class="com.ya.pokupay.dao.AdvertDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="productService" class="com.ya.pokupay.service.ProductServiceImpl">
-		<beans:property name="productDAO" ref="productDAO"/>
+	<beans:bean id="advertService" class="com.ya.pokupay.service.AdvertServiceImpl">
+		<beans:property name="advertDAO" ref="advertDAO"/>
 	</beans:bean>
-	<context:component-scan base-package="com.ya.pokupay" />
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 

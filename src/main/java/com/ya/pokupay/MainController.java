@@ -1,5 +1,6 @@
 package com.ya.pokupay;
 
+import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.model.Product;
 import com.ya.pokupay.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ import java.util.List;
 @RequestMapping("/")
 public class MainController {
 
-    private ProductService productService;
+//    private ProductService productService;
     private AdvertService advertService;
 
-    @Autowired(required=true)
-    @Qualifier(value="productService")
-    public void setPersonService(ProductService ps){
-        this.productService = ps;
-    }
+//    @Autowired(required=true)
+//    @Qualifier(value="productService")
+//    public void setPersonService(ProductService ps){
+//        this.productService = ps;
+//    }
 
     @Autowired(required=true)
     @Qualifier(value="advertService")
@@ -39,9 +40,11 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value =  {"/auto"}, method = RequestMethod.GET)
-    public String homePage() {
-
+    @RequestMapping(value =  "/auto", method = RequestMethod.GET)
+    public String autoPage(Model model) {
+        model.addAttribute("advert", new Advert());
+        model.addAttribute("listAdverts", this.advertService.listAdverts());
+        System.out.println("123 " + this.advertService.listAdverts());
         System.out.println("home");
         return "index";
     }

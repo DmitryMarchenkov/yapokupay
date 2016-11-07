@@ -34,13 +34,15 @@
             </div>
 
             <div class="dropdown">
-                <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Все категории
-                    <span class="caret"></span></button>
+                <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+                    ${category}
+                    <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Все категории</a></li>
-                    <li><a href="#">Недвижимость</a></li>
+                    <li><a href="/all">Все категории</a></li>
+                    <li><a href="/property">Недвижимость</a></li>
                     <li><a href="/auto">Авто</a></li>
-                    <li><a href="#">Одежда</a></li>
+                    <li><a href="/clothes">Одежда</a></li>
                     <li><a href="/technic">Техника</a></li>
                 </ul>
             </div>
@@ -51,47 +53,38 @@
     </div>
 
     <div id="content">
-
         <div class="page">
             <div class="inner-page">
-                HOME PAGE
+                <c:if test="${!empty listAdverts}">
+                    <p>Все товары в категории <strong>${category}</strong></p>
+                    <table class="tg">
+                        <tr>
+                            <th width="80">ID</th>
+                            <th width="120">Title</th>
+                            <th width="120">Price</th>
+                            <th width="120">Description</th>
+                            <th width="120">Category</th>
+                            <th width="120">Date</th>
+                            <th width="60">Edit</th>
+                            <th width="60">Delete</th>
+                        </tr>
+                        <c:forEach items="${listAdverts}" var="advert">
+                            <tr>
+                                <td>${advert.id}</td>
+                                <td>${advert.title}</td>
+                                <td>${advert.price}</td>
+                                <td>${advert.description}</td>
+                                <td>${advert.category}</td>
+                                <td>${advert.date}</td>
+                                <td><a href="<c:url value='/edit/${advert.id}' />" >Edit</a></td>
+                                <td><a href="<c:url value='/remove/${advert.id}' />" >Delete</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
             </div>
         </div>
-
     </div>
-
-    <div class="page">
-        <div class="inner-page">
-            <c:if test="${!empty listAdverts}">
-                <p>Все товары в категории <strong>Авто</strong></p>
-                <table class="tg">
-                    <tr>
-                        <th width="80">ID</th>
-                        <th width="120">Title</th>
-                        <th width="120">Price</th>
-                        <th width="120">Description</th>
-                        <th width="120">Category</th>
-                        <th width="120">Date</th>
-                        <th width="60">Edit</th>
-                        <th width="60">Delete</th>
-                    </tr>
-                    <c:forEach items="${listAdverts}" var="advert">
-                        <tr>
-                            <td>${advert.id}</td>
-                            <td>${advert.title}</td>
-                            <td>${advert.price}</td>
-                            <td>${advert.description}</td>
-                            <td>${advert.category}</td>
-                            <td>${advert.category}</td>
-                            <td><a href="<c:url value='/edit/${advert.id}' />" >Edit</a></td>
-                            <td><a href="<c:url value='/remove/${advert.id}' />" >Delete</a></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </c:if>
-        </div>
-    </div>
-
 </div>
 
 </body>

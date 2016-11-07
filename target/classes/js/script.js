@@ -3,12 +3,10 @@ $( document ).ready(function() {
 
     $(".dropdown-menu a").on("click", function () {
         var url = $(this).attr("href");
-        // debugger;
         if (url == '#') {
             history.replaceState('', '', '/');
         } else {
             history.pushState('', '', url);
         }
-
     })
 });

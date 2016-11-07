@@ -19,7 +19,7 @@ public class AdvertServiceImpl implements AdvertService {
 
     @Override
     @Transactional
-    public List<Advert> listAdverts() {
-        return this.advertDAO.listAdverts();
+    public List<Advert> listAdverts(String category) {
+        return this.advertDAO.listAdverts(category);
     }
 }

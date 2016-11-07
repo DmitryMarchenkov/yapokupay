@@ -1,5 +1,5 @@
 body {
-    background-color: #cccccc;
+    background-color: #fff;
     overflow-x: hidden;
 }
 
@@ -7,12 +7,120 @@ a {
     text-decoration: none;
 }
 
+.btn {
+    border: 2px solid transparent !important;
+}
+
+.btn-primary {
+    color: #077508 !important;
+    background-color: #ffffff !important;
+    border-color: #0d8c0e !important;
+}
+
+.btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #077508 !important;
+    text-shadow: 0 0px 10px rgba(203, 226, 11, 0.99);
+    box-shadow: 0 0px 30px rgba(29, 240, 29, 0.75);
+}
+
+.btn-primary:active {
+    color: #ffffff;
+    background-color: #28905b;
+    border-color: #44e26e;
+}
+
+#wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#header {
+    height: 170px;
+    padding: 10px;
+}
+
+#logo {
+    width: 200px;
+}
+
+#header_right {
+    float: right;
+    position: relative;
+    height: 100%;
+}
+
+
+.profile {
+    display: inline-block;
+    top: 10px;
+    float: right;
+    font-size: 20px;
+}
+
+.dropdown {
+    position: absolute !important;
+    bottom: 0px;
+    right: 0px;
+}
+
+.dropdown-menu {
+    font-size: 18px;
+}
+
+.dropdown-menu li:hover {
+    border: 1px solid #40fd40;
+    background: #dcf5e4;
+}
+
+#content {
+    margin-top: 10px;
+}
+
+
+
+
+
+.page {
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*padding: 0 0 0 210px;*/
+    /*background-position: center 0;*/
+    /*background-size: cover;*/
+}
+
+.inner-page {
+    /*position: relative;*/
+    /*height: 100%;*/
+    /*padding-top: 70px;*/
+    /*overflow: auto;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .visible {
     display: block;
 }
 
 .unvisible {
-    display: block;
+    display: none;
 }
 
 #navbar {
@@ -24,23 +132,6 @@ a {
     width: 210px;
     font: 700 14px/26px nexa,sans-serif;
     z-index: 999;
-}
-
-#logo {
-    width: 200px;
-    margin-top: 40px;
-    margin-left: 10px;
-}
-
-#menu {
-    margin: 150px 0 0 0;
-    padding: 0;
-    list-style: none;
-}
-
-#menu li {
-    border-top: 1px solid rgba(255,255,255,.1);
-    height: 50px;
 }
 
 .nav_menu {
@@ -77,41 +168,7 @@ a {
     color: rgba(255,255,255,.5);
 }
 
-
-.pg_home {
-    background-image: url("/resources/images/bg-home.jpg");
-}
-
-.pg_about {
-    background-image: url("/resources/images/bg-about.jpg");
-}
-
-.pg_products {
-    background-image: url("/resources/images/bg-products.jpg");
-}
-
-.pg_contacts {
-    background-image: url("/resources/images/bg-contacts.jpg");
-}
-
 #product_table {
     color: wheat;
 }
 
-.page {
-    position: absolute;
-    width: 100%;
-    left: 100%;
-
-    height: 100%;
-    padding: 0 0 0 210px;
-    background-position: center 0;
-    background-size: cover;
-}
-
-.inner-page {
-    position: relative;
-    height: 100%;
-    padding-top: 70px;
-    overflow: auto;
-}

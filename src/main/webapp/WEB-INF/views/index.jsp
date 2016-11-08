@@ -22,11 +22,14 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="#" >
+        <a href="/all" >
             <img id="logo" src="../../resources/images/logo.jpg">
         </a>
 
         <div id="header_right">
+            <a href="/addAdvert">
+                <button type="button" class="btn btn-default">Добавить объявление</button>
+            </a>
             <div class="profile">
                 <a href="#" id="profile">Гость</a>
                 |
@@ -47,40 +50,42 @@
                 </ul>
             </div>
         </div>
-
-
-
     </div>
 
     <div id="content">
         <div class="page">
-            <div class="inner-page">
-                <c:if test="${!empty listAdverts}">
-                    <p>Все товары в категории <strong>${category}</strong></p>
-                    <table class="tg">
-                        <tr>
-                            <th width="80">ID</th>
-                            <th width="120">Title</th>
-                            <th width="120">Price</th>
-                            <th width="120">Description</th>
-                            <th width="120">Category</th>
-                            <th width="120">Date</th>
-                        </tr>
-                        <c:forEach items="${listAdverts}" var="advert">
-                            <tr>
-                                <td>${advert.id}</td>
-                                <td>${advert.title}</td>
-                                <td>${advert.price}</td>
-                                <td>${advert.description}</td>
-                                <td>${advert.category}</td>
-                                <td>${advert.date}</td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </c:if>
-            </div>
+            <c:if test="${!empty listAdverts}">
+                <p>Все товары в категории <strong>${category}</strong></p>
+                    <c:forEach items="${listAdverts}" var="advert">
+                        <div class="advertItem">
+
+                            <c:choose>
+                                <c:when test="${!empty advert.img1}">
+                                    <img src="/resources/images/advertsImages/${advert.img1}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bg-about.jpg">
+                                </c:otherwise>
+                            </c:choose>
+
+                            <div class="advertInfo">
+                                <h2>${advert.title}</h2>
+                                <p>${advert.date}</p>
+                            </div>
+                            <div class="advertPrice">
+                                <p>${advert.price} грн</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+            </c:if>
         </div>
     </div>
+
+    <footer>
+        <p>
+            @Ya Pokupay
+        </p>
+    </footer>
 </div>
 
 </body>

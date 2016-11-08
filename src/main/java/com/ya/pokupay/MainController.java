@@ -36,8 +36,6 @@ public class MainController {
     @RequestMapping(value =  "/{category}", method = RequestMethod.GET)
     public String autoPage(@PathVariable("category") String category, Model model) {
         String queryCategory;
-        System.out.println("category: " + category);
-
         switch (category) {
             case "auto":
                 queryCategory = "Авто";
@@ -52,14 +50,20 @@ public class MainController {
                 queryCategory = "Все категории";
                 break;
         }
-
-        System.out.println("queryCategory: " + queryCategory);
         model.addAttribute("category", queryCategory);
         model.addAttribute("advert", new Advert());
         model.addAttribute("listAdverts", this.advertService.listAdverts(queryCategory));
-        System.out.println("listAdverts: " + this.advertService.listAdverts(queryCategory));
         return "index";
     }
+
+    @RequestMapping(value =  "/addAdvert", method = RequestMethod.GET)
+    public String addAdvertPage(Model model) {
+
+
+        return "addAdvert";
+    }
+
+
 
     //        session.close(); logout
 }

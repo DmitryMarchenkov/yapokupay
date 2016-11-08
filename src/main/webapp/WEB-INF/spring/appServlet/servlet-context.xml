@@ -29,22 +29,22 @@
 	</beans:bean>
 
 	<!--&lt;!&ndash;Local database&ndash;&gt;-->
-	<!--<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
-				<!--destroy-method="close">-->
-		<!--<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-		<!--<beans:property name="url" value="jdbc:mysql://localhost:3306/shopDB" />-->
-		<!--<beans:property name="username" value="arxangel192" />-->
-		<!--<beans:property name="password" value="qwe321zxc321" />-->
-	<!--</beans:bean>-->
-
-	<!--Remote database-->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 				destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://db4free.net:3306/yapokupay" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/shopDB" />
 		<beans:property name="username" value="arxangel192" />
 		<beans:property name="password" value="qwe321zxc321" />
 	</beans:bean>
+
+	<!--Remote database-->
+	<!--<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
+				<!--destroy-method="close">-->
+		<!--<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+		<!--<beans:property name="url" value="jdbc:mysql://db4free.net:3306/yapokupay" />-->
+		<!--<beans:property name="username" value="arxangel192" />-->
+		<!--<beans:property name="password" value="qwe321zxc321" />-->
+	<!--</beans:bean>-->
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"

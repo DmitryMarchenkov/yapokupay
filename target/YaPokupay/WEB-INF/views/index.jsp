@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Ya Pokupay</title>
-    <link rel="SHORTCUT ICON" href="${pageContext.request.contextPath}/resources/images/shortcut-icon.jpg" type="image/gif">
+    <link rel="icon" href="${pageContext.request.contextPath}/favicon.ico" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
@@ -65,8 +65,6 @@
                             <th width="120">Description</th>
                             <th width="120">Category</th>
                             <th width="120">Date</th>
-                            <th width="60">Edit</th>
-                            <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listAdverts}" var="advert">
                             <tr>
@@ -76,8 +74,6 @@
                                 <td>${advert.description}</td>
                                 <td>${advert.category}</td>
                                 <td>${advert.date}</td>
-                                <td><a href="<c:url value='/edit/${advert.id}' />" >Edit</a></td>
-                                <td><a href="<c:url value='/remove/${advert.id}' />" >Delete</a></td>
                             </tr>
                         </c:forEach>
                     </table>

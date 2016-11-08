@@ -20,11 +20,15 @@ public class AdvertDAOImpl implements AdvertDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Advert> listAdverts(String category) {
+        Query query;
         Session session = this.sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Advert where category = :category");
-        query.setParameter("category", category);
+        if (category == "Все категории") {
+            query = session.createQuery("from Advert");
+        } else {
+            query = session.createQuery("from Advert where category = :category");
+            query.setParameter("category", category);
+        }
         List<Advert> advertsList = query.list();
-//        session.close();
         return advertsList;
     }
 }

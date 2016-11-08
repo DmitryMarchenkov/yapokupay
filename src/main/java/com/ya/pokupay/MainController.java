@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import java.util.List;
-
 @Controller
-@RequestMapping("/**")
+@RequestMapping("/")
 public class MainController {
 
     private AdvertService advertService;
@@ -63,4 +60,6 @@ public class MainController {
         System.out.println("listAdverts: " + this.advertService.listAdverts(queryCategory));
         return "index";
     }
+
+    //        session.close(); logout
 }

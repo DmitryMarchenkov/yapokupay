@@ -9,17 +9,13 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/src/main/webapp/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="web application context" name="MVC application context" removed="true">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/security.xml</file>
         </fileset>
         <fileset id="web appServlet servlet context" name="MVC appServlet servlet context" removed="true">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</file>
@@ -34,7 +30,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -45,8 +40,6 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.0.3.RELEASE" level="project" />
@@ -72,7 +65,14 @@
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.7.1" level="project" />
-    <orderEntry type="library" name="Maven: postgresql:postgresql:9.1-901.jdbc4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.3.RELEASE" level="project" />
   </component>
 </module>

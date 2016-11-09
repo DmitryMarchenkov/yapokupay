@@ -22,4 +22,9 @@ public class AdvertServiceImpl implements AdvertService {
     public List<Advert> listAdverts(String category) {
         return this.advertDAO.listAdverts(category);
     }
+
+    @Override
+    public void addAdvert(Advert a) {
+        this.advertDAO.addAdvert(a);
+    }
 }

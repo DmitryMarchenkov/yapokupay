@@ -31,4 +31,11 @@ public class AdvertDAOImpl implements AdvertDAO {
         List<Advert> advertsList = query.list();
         return advertsList;
     }
+
+    @Override
+    public void addAdvert(Advert a) {
+        Session session = this.sessionFactory.openSession();
+        session.persist(a);
+        session.flush();
+    }
 }

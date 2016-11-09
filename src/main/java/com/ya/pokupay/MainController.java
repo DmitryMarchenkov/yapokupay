@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
@@ -58,9 +56,21 @@ public class MainController {
 
     @RequestMapping(value =  "/addAdvert", method = RequestMethod.GET)
     public String addAdvertPage(Model model) {
-
-
+        model.addAttribute("advert", new Advert());
         return "addAdvert";
+    }
+
+    @RequestMapping(value =  "/advert/add", method = RequestMethod.POST)
+    public String addAdvert(@ModelAttribute("advert") Advert advert) {
+//    public String addAdvert(@RequestBody Advert advert) {
+        System.out.println("Enter to adding");
+        System.out.println("id" + advert.getId());
+        System.out.println("title" + advert.getTitle());
+        System.out.println("price" + advert.getPrice());
+//        if(advert.getId() == 0){
+            //new person, add it
+            this.advertService.addAdvert(advert);
+        return "redirect:/all";
     }
 
 

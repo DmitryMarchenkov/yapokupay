@@ -16,7 +16,6 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/resources/**" location="/resources/" />
 
     <context:component-scan base-package="com.ya.pokupay" />
 
@@ -60,6 +59,9 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
+
+
+				<!--<beans:prop key="hibernate.current_session_context_class">thread</beans:prop>-->
 			</beans:props>
 		</beans:property>
 	</beans:bean>

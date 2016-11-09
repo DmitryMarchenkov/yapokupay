@@ -14,7 +14,7 @@
 
     <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/scriptAddAdvert.js"></script>
 
 </head>
 <body>
@@ -49,6 +49,34 @@
     <div id="content">
         <div class="page">
            <h2>Добавить объявление</h2>
+
+
+
+            <form:form id="advertForm" method="post" action="advert/add" commandName="advert" acceptCharset="UTF-8">
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+                <table>
+                    <tr>
+                        <td>title</td>
+                        <td><form:input path="title" /></td>
+                    </tr>
+                    <tr>
+                        <td>price</td>
+                        <!--Notice, this is normal html tag, will not be bound to an object -->
+                        <td><input name="price" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="send"/>
+                        </td>
+                    </tr>
+                </table>
+            </form:form>
+
+
+
+
         </div>
     </div>
 

@@ -33,7 +33,8 @@
             <div class="profile">
                 <a href="#" id="profile">Гость</a>
                 |
-                <a href="#" id="login">Log In</a>
+                <a href="<c:url value="/login" />" id="login">Log In</a>
+                <a href="<c:url value="/logout" />" id="logout">Log Out</a>
             </div>
 
             <div class="dropdown">

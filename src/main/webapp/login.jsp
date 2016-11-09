@@ -6,34 +6,35 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <title><spring:message code="label.title" /></title>
+    <title>Титул</title>
 </head>
 <body>
 
-<a href="<c:url value="/index" />">
-    <spring:message code="label.contacts" />
-</a><br/>
-
 <c:if test="${not empty param.error}">
-    <font color="red"> <spring:message code="label.loginerror" />
-        : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
+    Ошибка входа
+        : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 </c:if>
-<form method="POST" action="<c:url value="/j_spring_security_check" />">
+<form method="POST" action="/login">
     <table>
         <tr>
-            <td align="right"><spring:message code="label.login" /></td>
-            <td><input type="text" name="j_username" /></td>
+            <td align="right">Логин</td>
+            <td><input type="text" name="username" /></td>
         </tr>
         <tr>
-            <td align="right"><spring:message code="label.password" /></td>
-            <td><input type="password" name="j_password" /></td>
+            <td align="right">Пароль</td>
+            <td><input type="password" name="password" /></td>
         </tr>
         <tr>
-            <td align="right"><spring:message code="label.remember" /></td>
+            <td align="right">Запомнить меня</td>
             <td><input type="checkbox" name="_spring_security_remember_me" /></td>
         </tr>
         <tr>
-            <td colspan="2" align="right"><input type="submit" value="Login" />
+            <td colspan="2" align="right">
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+                <input type="submit" value="Login" />
                 <input type="reset" value="Reset" /></td>
         </tr>
     </table>

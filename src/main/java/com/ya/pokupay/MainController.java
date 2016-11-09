@@ -4,23 +4,30 @@ import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping("/")
 public class MainController {
 
+    @Autowired
     private AdvertService advertService;
 
 
-    @Autowired(required=true)
-    @Qualifier(value="advertService")
-    public void setAdvertService(AdvertService as){
-        this.advertService = as;
-    }
+//    @Autowired(required=true)
+//    @Qualifier(value="advertService")
+//    public void setAdvertService(AdvertService as){
+//        this.advertService = as;
+//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
@@ -71,6 +78,16 @@ public class MainController {
             //new person, add it
             this.advertService.addAdvert(advert);
         return "redirect:/all";
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("logout");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
 

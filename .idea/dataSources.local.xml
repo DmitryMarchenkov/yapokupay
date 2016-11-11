@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - shopDB@localhost" uuid="35ae7b5b-8c34-4e40-9e49-93a40c1c82c3">
+      <database-info product="MySQL" version="5.7.16-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>arxangel192</user-name>
+      <introspection-scope>shopDB:</introspection-scope>
+      <resolve-scope>shopDB:</resolve-scope>
+    </data-source>
+    <data-source name="MySQL - yapokupay@db4free.net" uuid="c59951b2-6490-4488-bf0f-620e142337ce">
+      <database-info product="MySQL" version="5.7.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>arxangel192</user-name>
+      <introspection-scope>yapokupay:</introspection-scope>
+      <resolve-scope>yapokupay:</resolve-scope>
+    </data-source>
+  </component>
+</project>

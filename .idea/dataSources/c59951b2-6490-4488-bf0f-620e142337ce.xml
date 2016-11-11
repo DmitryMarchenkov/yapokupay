@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - yapokupay@db4free.net">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="yapokupay">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <table id="3" parent="1" name="advert"/>
+    <column id="4" parent="3" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="5" parent="3" name="title">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="6" parent="3" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="7" parent="3" name="description">
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="8" parent="3" name="date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="9" parent="3" name="authorid">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="10" parent="3" name="category">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="11" parent="3" name="state">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="12" parent="3" name="img1">
+      <data-type>blob|0</data-type>
+    </column>
+    <column id="13" parent="3" name="img2">
+      <data-type>blob|0</data-type>
+    </column>
+    <column id="14" parent="3" name="img3">
+      <data-type>blob|0</data-type>
+    </column>
+    <column id="15" parent="3" name="img4">
+      <data-type>blob|0</data-type>
+    </column>
+    <key id="16" parent="3" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

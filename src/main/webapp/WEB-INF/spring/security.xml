@@ -10,7 +10,7 @@ http://www.springframework.org/schema/security/spring-security-4.0.xsd">
     <!--use-expressions="true"-->
     <http auto-config="true" >
         <!--<intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS" />-->
-        <intercept-url pattern="/addAdvert*" access="hasRole('ROLE_USER')" />
+        <!--<intercept-url pattern="/addAdvert*" access="hasRole('ROLE_USER')" />-->
         <!--<intercept-url pattern="/delete/*" access="ROLE_ADMIN" />-->
         <form-login login-page="/login.jsp"
                     default-target-url="/all"

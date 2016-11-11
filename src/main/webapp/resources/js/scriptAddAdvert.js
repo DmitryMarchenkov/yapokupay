@@ -10,35 +10,47 @@ $( document ).ready(function() {
         }
     })
 
-    /*$("#advertForm").submit(function() {
-        // alert('go');
-        // debugger;
-        // var token = $('#csrfToken').val();
-        // var header = $('#csrfHeader').val();
-        // event.preventDefault();
-        var form_data = $(this).serialize(); //собераем все данные из формы
+    $("#advertForm").submit(function(e) {
+        e.preventDefault();
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var obyavleniye = {
+            title: $("input[name = 'title']").val(),
+            price: $("input[name = 'price']").val(),
+            description: $("input[name = 'description']").val(),
+            date: $("input[name = 'date']").val(),
+            authorid: $("input[name = 'authorid']").val(),
+            category: $("input[name = 'category']").val(),
+            state: $("input[name = 'state']").val(),
+            img1: $("input[name = 'img1']").val(),
+            img2: $("input[name = 'img2']").val(),
+            img3: $("input[name = 'img3']").val(),
+            img4: $("input[name = 'img4']").val(),
+        };
+        var post_data = JSON.stringify(obyavleniye);
+
+        console.log(post_data);
         $.ajax({
-            // url: "/advert/add",
-            url : "/advert/add",
-            type: "POST", //Метод отправки
-            crossDomain: true,
+            url : "/upload",
+            type: "POST",
             dataType: 'json',
-            async : true,
-            data: form_data,
+            data: post_data,
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("Accept", "application/json");
-                xhr.setRequestHeader("Content-Type", "application/json");
-                // xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
-                // xhr.setRequestHeader(header, token);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+                xhr.setRequestHeader(header, token);
             },
-            complete: function(dd) {
-                // alert('Ваше сообщение отправлено!');
-              /!*  setTimeout(function () {
-                    $(".shadow").css('display', 'none');
-                    window.history.pushState(null, null, '/');
-                    $("#form")[0].reset();
-                }, 2000);*!/
+            complete: function() {
+                console.log("Sent");
             },
+            success: function (response) {
+                console.log("success");
+                console.log("response" + response);
+            },
+            error: function (data) {
+                console.log("error");
+                console.log(data);
+            }
         });
-    })*/
+    })
 });

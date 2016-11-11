@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Date;
@@ -24,7 +25,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="advert")
-public class Advert {
+public class Advert implements Serializable{
 
     @Id
     @Column(name="id")
@@ -150,7 +151,20 @@ public class Advert {
     }
 
     @Override
-    public String toString(){
-        return "id="+id+", title="+title+", price="+price;
+    public String toString() {
+        return "Obyavleniye{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", authorid=" + authorid +
+                ", category='" + category + '\'' +
+                ", state='" + state + '\'' +
+                ", img1='" + img1 + '\'' +
+                ", img2='" + img2 + '\'' +
+                ", img3='" + img3 + '\'' +
+                ", img4='" + img4 + '\'' +
+                '}';
     }
 }

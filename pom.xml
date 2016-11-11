@@ -146,8 +146,6 @@
     </dependencies>
     <build>
         <plugins>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -182,6 +180,7 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -190,11 +189,6 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
-
-
-
-
-
 
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -206,7 +200,6 @@
                     <path>/</path>
                 </configuration>
             </plugin>
-
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -230,8 +223,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
         </plugins>
         <finalName>${project.artifactId}</finalName>
     </build>

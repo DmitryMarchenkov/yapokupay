@@ -16,6 +16,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/scriptAddAdvert.js"></script>
 
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 
@@ -51,29 +53,63 @@
         <div class="page">
            <h2>Добавить объявление</h2>
 
+            <form id="advertForm"  commandName="advert" acceptCharset="UTF-8">
 
-
-            <form:form id="advertForm" method="post" action="advert/add" commandName="advert" acceptCharset="UTF-8">
-                <input type="hidden"
-                       name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
                 <table>
                     <tr>
                         <td>title</td>
-                        <td><form:input path="title" /></td>
+                        <td><input name="title" type="text"/></td>
                     </tr>
                     <tr>
                         <td>price</td>
-                        <!--Notice, this is normal html tag, will not be bound to an object -->
                         <td><input name="price" type="text"/></td>
                     </tr>
+                    <tr>
+                        <td>description</td>
+                        <td><input name="description" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td><input name="date" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>authorid</td>
+                        <td><input name="authorid" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>category</td>
+                        <td><input name="category" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>state</td>
+                        <td><input name="state" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>img1</td>
+                        <td><input name="img1" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>img2</td>
+                        <td><input name="img2" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>img3</td>
+                        <td><input name="img3" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>img4</td>
+                        <td><input name="img4" type="text"/></td>
+                    </tr>
+
+
+
                     <tr>
                         <td colspan="2">
                             <input type="submit" value="send"/>
                         </td>
                     </tr>
                 </table>
-            </form:form>
+            </form>
 
 
 

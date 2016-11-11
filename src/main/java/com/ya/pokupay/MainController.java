@@ -3,15 +3,12 @@ package com.ya.pokupay;
 import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,13 +18,6 @@ public class MainController {
 
     @Autowired
     private AdvertService advertService;
-
-
-//    @Autowired(required=true)
-//    @Qualifier(value="advertService")
-//    public void setAdvertService(AdvertService as){
-//        this.advertService = as;
-//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
@@ -67,19 +57,6 @@ public class MainController {
         return "addAdvert";
     }
 
-    @RequestMapping(value =  "/advert/add", method = RequestMethod.POST)
-    public String addAdvert(@ModelAttribute("advert") Advert advert) {
-//    public String addAdvert(@RequestBody Advert advert) {
-        System.out.println("Enter to adding");
-        System.out.println("id" + advert.getId());
-        System.out.println("title" + advert.getTitle());
-        System.out.println("price" + advert.getPrice());
-//        if(advert.getId() == 0){
-            //new person, add it
-            this.advertService.addAdvert(advert);
-        return "redirect:/all";
-    }
-
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         System.out.println("logout");
@@ -90,7 +67,15 @@ public class MainController {
         return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
+//    @RequestParam(value = "start_date") String start_date
+
+    @ResponseBody
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    public String logoutPage (@RequestBody Advert obyavleniye) {
+        System.out.println("Enter: " + obyavleniye);
+        this.advertService.addAdvert(obyavleniye);
+        return "{\"msg\":\"success\"}";
+    }
 
 
-    //        session.close(); logout
 }

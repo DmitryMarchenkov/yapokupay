@@ -17,9 +17,16 @@
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/security.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-security.xml</file>
         </fileset>
         <fileset id="web appServlet servlet context" name="MVC appServlet servlet context" removed="true">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-mvc.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-root.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-security.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -64,16 +71,17 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:jsp-api:2.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.7.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:1.8.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.10.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.12" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.3" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.3" level="project" />
   </component>
 </module>

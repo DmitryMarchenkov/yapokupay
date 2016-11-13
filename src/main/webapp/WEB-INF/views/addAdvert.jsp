@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Ya Pokupay</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" type="image/x-icon"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>

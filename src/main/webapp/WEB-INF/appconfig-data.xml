@@ -4,9 +4,10 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:tx="http://www.springframework.org/schema/tx"
              xmlns:util="http://www.springframework.org/schema/util"
+             xmlns:jpa="http://www.springframework.org/schema/data/jpa"
              xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <util:properties id="application" location="classpath:database.properties"/>
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -31,9 +32,20 @@
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
                 </beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
 
-
-                <!--<beans:prop key="hibernate.current_session_context_class">thread</beans:prop>-->
+    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="packagesToScan" value="com.ya.pokupay.model"/>
+        <beans:property name="jpaVendorAdapter">
+            <beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </beans:property>
+        <beans:property name="jpaProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
+                <beans:prop key="hibernate.show_sql">true</beans:prop>
             </beans:props>
         </beans:property>
     </beans:bean>
@@ -51,5 +63,5 @@
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
 
-
+    <jpa:repositories base-package="com.ya.pokupay.dao"/>
 </beans:beans>

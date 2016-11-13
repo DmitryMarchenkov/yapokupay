@@ -1,13 +1,18 @@
 package com.ya.pokupay;
 
 import com.ya.pokupay.model.Advert;
+import com.ya.pokupay.model.User;
 import com.ya.pokupay.service.AdvertService;
+import com.ya.pokupay.service.SecurityService;
+import com.ya.pokupay.service.UserService;
+import com.ya.pokupay.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +23,15 @@ public class MainController {
 
     @Autowired
     private AdvertService advertService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private UserValidator userValidator;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
@@ -77,5 +91,32 @@ public class MainController {
         return "{\"msg\":\"success\"}";
     }
 
+
+
+
+
+
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
+
+        return "registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+
+        userService.save(userForm);
+
+        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+        return "redirect:/welcome";
+    }
 
 }

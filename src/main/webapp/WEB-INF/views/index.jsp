@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 <html>
 <head>
@@ -31,10 +29,18 @@
                 <button type="button" class="btn btn-default">Добавить объявление</button>
             </a>
             <div class="profile">
-                <a href="#" id="profile">Гость</a>
-                |
-                <a href="<c:url value="/login" />" id="login">Log In</a>
-                <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                <c:choose>
+                    <c:when test="${pageContext.request.userPrincipal.name != null}">
+                        <a href="#" id="profile">${pageContext.request.userPrincipal.name}</a>
+                        |
+                        <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="#" id="profile">Гость</a>
+                        |
+                        <a href="<c:url value="/login" />" id="login">Log In</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
             <div class="dropdown">
@@ -52,6 +58,10 @@
             </div>
         </div>
     </div>
+
+        <%--<c:set var="showCategories" scope="request" value="true" />--%>
+        <%--<c:set var="category" scope="request" value="${category}" />--%>
+       <%--<jsp:include page="header.jsp"/>--%>
 
     <div id="content">
         <div class="page">

@@ -20,4 +20,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basename" value="messages">
+			<!--<beans:list>-->
+				<!--<beans:value>classpath:validation</beans:value>-->
+			<!--</beans:list>-->
+		</beans:property>
+	</beans:bean>
+
 </beans:beans>

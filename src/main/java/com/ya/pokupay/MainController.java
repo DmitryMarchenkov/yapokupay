@@ -86,6 +86,7 @@ public class MainController {
     @ResponseBody
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String logoutPage (@RequestBody Advert obyavleniye) {
+//    public String logoutPage (@RequestBody String obyavleniye) {
         System.out.println("Enter: " + obyavleniye);
         this.advertService.addAdvert(obyavleniye);
         return "{\"msg\":\"success\"}";
@@ -96,6 +97,7 @@ public class MainController {
 
 
 
+/*
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -118,5 +120,6 @@ public class MainController {
 
         return "redirect:/welcome";
     }
+*/
 
 }

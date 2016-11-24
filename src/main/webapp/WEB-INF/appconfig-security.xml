@@ -10,6 +10,7 @@ http://www.springframework.org/schema/security/spring-security-4.0.xsd http://ww
 
     <context:component-scan base-package="com.ya.pokupay" />
     <http auto-config="true" >
+        <!--<access-denied-handler error-page="error403.jsp"/>-->
         <intercept-url pattern="/addAdvert*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
         <intercept-url pattern="/adminPage*" access="hasRole('ROLE_ADMIN')" />
 
@@ -23,7 +24,9 @@ http://www.springframework.org/schema/security/spring-security-4.0.xsd http://ww
     </http>
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="userDetailsServiceImpl"/>
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <!--<password-encoder ref="encoder"></password-encoder>-->
+        </authentication-provider>
     </authentication-manager>
 
    <beans:bean id="userDetailsServiceImpl"

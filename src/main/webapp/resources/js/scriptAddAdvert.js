@@ -14,7 +14,7 @@ $( document ).ready(function() {
         e.preventDefault();
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
-        var obyavleniye = {
+  /*      var obyavleniye = {
             title: $("input[name = 'title']").val(),
             price: $("input[name = 'price']").val(),
             description: $("input[name = 'description']").val(),
@@ -26,6 +26,19 @@ $( document ).ready(function() {
             img2: $("input[name = 'img2']").val(),
             img3: $("input[name = 'img3']").val(),
             img4: $("input[name = 'img4']").val(),
+        };*/
+        var obyavleniye = {
+            title: "Title",
+            price: "80",
+            description: "norm",
+            date: "2016-11-07 18:30:21",
+            authorid: "2",
+            category: "A",
+            state: "new",
+            img1: "http",
+            img2: "http",
+            img3: "http",
+            img4: "http",
         };
         var post_data = JSON.stringify(obyavleniye);
 
@@ -52,5 +65,5 @@ $( document ).ready(function() {
                 console.log(data);
             }
         });
-    })
+    });
 });

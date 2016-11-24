@@ -17,7 +17,6 @@
 </head>
 <body>
 
-
 <div id="wrapper">
     <div id="header">
         <a href="/all" >

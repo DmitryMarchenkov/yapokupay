@@ -27,6 +27,8 @@ import java.util.Date;
 @Table(name="advert")
 public class Advert implements Serializable{
 
+    public Advert() {}
+
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)

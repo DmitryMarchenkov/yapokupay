@@ -30,7 +30,7 @@ $( document ).ready(function() {
         var obyavleniye = {
             title: "Title",
             price: "80",
-            description: "norm",
+            description: "normm",
             date: "2016-11-07 18:30:21",
             authorid: "2",
             category: "A",

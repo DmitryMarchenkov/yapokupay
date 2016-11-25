@@ -1,4 +1,4 @@
-package com.ya.pokupay;
+package com.ya.pokupay.controller;
 
 import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.model.User;
@@ -14,11 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class MainController {
 
     @Autowired
@@ -33,7 +35,7 @@ public class MainController {
     @Autowired
     private UserValidator userValidator;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value =  {"/", "/all"}, method = RequestMethod.GET)
     public String index(Model model) {
         String category = "Все категории";
         model.addAttribute("category", category);
@@ -94,7 +96,6 @@ public class MainController {
 
 
 
-/*
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -115,8 +116,24 @@ public class MainController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
 
-        return "redirect:/welcome";
+        return "redirect:/all";
     }
-*/
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        System.out.println("ERROR***************************************************************************");
+//        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect.");
+//            model.addObject("error", "Username or password is incorrect.");
+        }
+
+        if (logout != null) {
+            model.addAttribute("message", "Logged out successfully.");
+        }
+//        model.addObject("message", "Logged .");
+
+        return "login";
+    }
 
 }

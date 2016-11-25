@@ -81,15 +81,12 @@ public class MainController {
         return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
-//    @RequestParam(value = "start_date") String start_date
-
     @ResponseBody
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String logoutPage (@RequestBody Advert obyavleniye) {
-//    public String logoutPage (@RequestBody String obyavleniye) {
         System.out.println("Enter: " + obyavleniye);
-        this.advertService.addAdvert(obyavleniye);
-        return "{\"msg\":\"success\"}";
+//        this.advertService.addAdvert(obyavleniye);
+        return "success";
     }
 
 

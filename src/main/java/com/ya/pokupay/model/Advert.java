@@ -1,5 +1,8 @@
 package com.ya.pokupay.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.imageio.ImageIO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,11 +30,10 @@ import java.util.Date;
 @Table(name="advert")
 public class Advert implements Serializable{
 
-    public Advert() {}
-
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     private int id;
 
     private String title;

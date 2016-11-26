@@ -25,6 +25,8 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>com.ya.pokupay.model.Advert</beans:value>
+                <beans:value>com.ya.pokupay.model.User</beans:value>
+                <beans:value>com.ya.pokupay.model.Role</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

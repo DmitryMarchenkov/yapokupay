@@ -1,7 +1,7 @@
 package com.ya.pokupay.service;
 
 
-import com.ya.pokupay.dao.UserDao;
+import com.ya.pokupay.dao.UserDAO;
 import com.ya.pokupay.model.Role;
 import com.ya.pokupay.model.User;
 
@@ -19,7 +19,7 @@ import java.util.Set;
 public class UserDetailsServiceImpl implements UserDetailsService{
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
 
     @Override
     @Transactional(readOnly = true)

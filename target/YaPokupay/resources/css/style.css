@@ -1,0 +1,150 @@
+body {
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    border: 2px solid transparent !important;
+}
+
+.btn-primary {
+    color: #077508 !important;
+    background-color: #ffffff !important;
+    border-color: #0d8c0e !important;
+}
+
+.btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #077508 !important;
+    text-shadow: 0 0px 10px rgba(203, 226, 11, 0.99);
+    box-shadow: 0 0px 10px rgba(29, 240, 29, 0.75);
+}
+
+.btn-primary:active {
+    color: #ffffff;
+    background-color: #28905b;
+    border-color: #44e26e;
+    text-shadow: 0px 5px 10px #0003ff;
+}
+
+.btn-default {
+    color: #27C228  !important;
+    background-color: #ffffff !important;
+    border-color: #0d8c0e !important;
+}
+
+.btn-default:hover {
+    color: #ffffff !important;
+    background-color: #35B636  !important;
+    text-shadow: 0 0px 10px rgba(203, 226, 11, 0.99);
+    box-shadow: 0 0px 10px rgba(29, 240, 29, 0.75);
+}
+
+.btn-default:active {
+    color: #ffffff;
+    background-color: #28905b;
+    border-color: #44e26e;
+    text-shadow: 0px 5px 10px #0003ff;
+}
+
+#wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#header {
+    height: 170px;
+    padding: 10px;
+}
+
+#logo {
+    width: 200px;
+}
+
+#header_right {
+    float: right;
+    position: relative;
+    height: 100%;
+    width: 450px;
+}
+
+
+.profile {
+    display: inline-block;
+    top: 10px;
+    float: right;
+    font-size: 20px;
+}
+
+.dropdown {
+    position: absolute !important;
+    bottom: 0px;
+    right: 0px;
+}
+
+.dropdown-menu {
+    font-size: 18px;
+}
+
+.dropdown-menu li:hover {
+    border: 1px solid #40fd40;
+    background: #dcf5e4;
+}
+
+#content {
+    margin-top: 10px;
+}
+
+.advertItem {
+    margin: 30px 10px;
+    position: relative;
+}
+
+.advertItem img {
+    max-width: 200px;
+    max-height: 130px;
+    display: inline-block;
+}
+
+.advertInfo {
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    padding: 0px 10px;
+}
+
+.advertInfo h2 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.advertInfo p {
+    bottom: 0px;
+    position: absolute;
+    margin: 0px;
+    width: 250px;
+}
+
+.advertPrice {
+    display: inline-block;
+    float: right;
+    width: 150px;
+    font-size: 22pt;
+}
+
+footer {
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    margin-bottom: 5px;
+}
+
+footer p {
+    text-align: center;
+}
+

@@ -86,7 +86,7 @@ public class MainController {
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String logoutPage (@RequestBody Advert obyavleniye) {
         System.out.println("Enter: " + obyavleniye);
-//        this.advertService.addAdvert(obyavleniye);
+        this.advertService.addAdvert(obyavleniye);
         return "success";
     }
 

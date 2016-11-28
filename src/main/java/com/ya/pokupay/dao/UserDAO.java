@@ -2,8 +2,11 @@ package com.ya.pokupay.dao;
 
 
 import com.ya.pokupay.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface UserDAO extends JpaRepository<User, Long> {
+@Transactional
+public interface UserDAO {
     User findByUsername(String username);
+
+    void save(User user);
 }

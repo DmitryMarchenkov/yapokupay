@@ -1,31 +1,14 @@
 package com.ya.pokupay.model;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.imageio.ImageIO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.Date;
 
-/**
- * Entity bean with JPA annotations
- * Hibernate provides JPA implementation
- * @author pankaj
- *
- */
 @Entity
 @Table(name="advert")
 public class Advert implements Serializable{

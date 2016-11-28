@@ -59,6 +59,10 @@
         <beans:property name="advertDAO" ref="advertDAO"/>
     </beans:bean>
 
+    <beans:bean id="UserDAO" class="com.ya.pokupay.dao.UserDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-//@RequestMapping("/")
 public class MainController {
 
     @Autowired
@@ -93,10 +92,6 @@ public class MainController {
 
 
 
-
-
-
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -114,7 +109,7 @@ public class MainController {
 
         userService.save(userForm);
 
-//        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
 
         return "redirect:/all";
     }
@@ -122,17 +117,13 @@ public class MainController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         System.out.println("ERROR***************************************************************************");
-//        ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
-//            model.addObject("error", "Username or password is incorrect.");
         }
 
         if (logout != null) {
             model.addAttribute("message", "Logged out successfully.");
         }
-//        model.addObject("message", "Logged .");
-
         return "login";
     }
 

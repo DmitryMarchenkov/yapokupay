@@ -4,7 +4,6 @@ import com.ya.pokupay.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,8 +17,6 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User findByUsername(String username) {
-        System.out.println("FIND USER");
-
         Session session = this.sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User where username = :username");
         query.setParameter("username", username);
@@ -34,9 +31,7 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void save(User user) {
-        System.out.println("SAVE USER");
         Session session = this.sessionFactory.openSession();
-//        session.persist(user);
         session.save(user);
         session.flush();
     }

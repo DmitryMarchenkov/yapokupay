@@ -22,7 +22,7 @@ public class AdvertDAOImpl implements AdvertDAO {
     public List<Advert> listAdverts(String category) {
         Query query;
         Session session = this.sessionFactory.getCurrentSession();
-        if (category == "Все категории") {
+        if (category.equals("Все категории")) {
             query = session.createQuery("from Advert");
         } else {
             query = session.createQuery("from Advert where category = :category");

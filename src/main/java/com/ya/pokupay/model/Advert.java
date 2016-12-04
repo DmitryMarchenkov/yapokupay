@@ -25,21 +25,17 @@ public class Advert implements Serializable{
 
     private String description;
 
-    private Date date;
+    private String date;
 
-    private int authorid;
+    private String authorid;
+
+    private String authorUsername;
 
     private String category;
 
     private String state;
 
-    private String img1;
-
-    private String img2;
-
-    private String img3;
-
-    private String img4;
+    private String checkAddedImg;
 
     public int getId() {
         return id;
@@ -73,20 +69,28 @@ public class Advert implements Serializable{
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getAuthorid() {
+    public String getAuthorid() {
         return authorid;
     }
 
-    public void setAuthorid(int authorid) {
+    public void setAuthorid(String authorid) {
         this.authorid = authorid;
+    }
+
+    public String getAuthorUsername() {
+        return authorUsername;
+    }
+
+    public void setAuthorUsername(String authorUsername) {
+        this.authorUsername = authorUsername;
     }
 
     public String getCategory() {
@@ -105,53 +109,27 @@ public class Advert implements Serializable{
         this.state = state;
     }
 
-    public String getImg1() {
-        return img1;
+    public String getCheckAddedImg() {
+        return checkAddedImg;
     }
 
-    public void setImg1(String img1) {
-        this.img1 = img1;
-    }
-
-    public String getImg2() {
-        return img2;
-    }
-
-    public void setImg2(String img2) {
-        this.img2 = img2;
-    }
-
-    public String getImg3() {
-        return img3;
-    }
-
-    public void setImg3(String img3) {
-        this.img3 = img3;
-    }
-
-    public String getImg4() {
-        return img4;
-    }
-
-    public void setImg4(String img4) {
-        this.img4 = img4;
+    public void setCheckAddedImg(String checkAddedImg) {
+        this.checkAddedImg = checkAddedImg;
     }
 
     @Override
     public String toString() {
-        return "Obyavleniye{" +
+        return "Advert{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
                 ", description='" + description + '\'' +
-                ", date=" + date +
-                ", authorid=" + authorid +
+                ", date='" + date + '\'' +
+                ", authorid='" + authorid + '\'' +
+                ", authorUsername='" + authorUsername + '\'' +
                 ", category='" + category + '\'' +
                 ", state='" + state + '\'' +
-                ", img1='" + img1 + '\'' +
-                ", img2='" + img2 + '\'' +
-                ", img3='" + img3 + '\'' +
-                ", img4='" + img4 + '\'' +
+                ", isAddedImg=" + checkAddedImg +
                 '}';
     }
 }

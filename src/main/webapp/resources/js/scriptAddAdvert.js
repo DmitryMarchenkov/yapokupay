@@ -1,6 +1,4 @@
 $( document ).ready(function() {
-    var currentURL = window.location.href;
-
     $(".dropdown-menu a").on("click", function () {
         var url = $(this).attr("href");
         if (url == '#') {
@@ -8,44 +6,112 @@ $( document ).ready(function() {
         } else {
             history.pushState('', '', url);
         }
-    })
+    });
+
+
+    //
+    //
+    //     maxFileSize = 1000000; // максимальный размер фалйа - 1 мб.
+    //
+    //
+    // // Обрабатываем событие Drop
+    // dropZone[0].ondrop = function(event) {
+    //     event.preventDefault();
+    //     dropZone.removeClass('hover');
+    //     dropZone.addClass('drop');
+    //
+    //     var file = event.dataTransfer.files[0];
+    //
+    //     // Проверяем размер файла
+    //     if (file.size > maxFileSize) {
+    //         dropZone.text('Файл слишком большой!');
+    //         dropZone.addClass('error');
+    //         return false;
+    //     }
+    //
+    //     // Создаем запрос
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.upload.addEventListener('progress', uploadProgress, false);
+    //     xhr.onreadystatechange = stateChange;
+    //     xhr.open('POST', '/upload.php');
+    //     xhr.setRequestHeader('X-FILE-NAME', file.name);
+    //     xhr.send(file);
+    // };
+    //
+    // // Показываем процент загрузки
+    // function uploadProgress(event) {
+    //     var percent = parseInt(event.loaded / event.total * 100);
+    //     dropZone.text('Загрузка: ' + percent + '%');
+    // }
+    //
+    // // Пост обрабочик
+    // function stateChange(event) {
+    //     if (event.target.readyState == 4) {
+    //         if (event.target.status == 200) {
+    //             dropZone.text('Загрузка успешно завершена!');
+    //         } else {
+    //             dropZone.text('Произошла ошибка!');
+    //             dropZone.addClass('error');
+    //         }
+    //     }
+    // }
+    //
+
+
+
+    // var imagesFiles;
+    // var imagesFilesTmp;
+    // $("#uploadImages").on("change", function (event) {
+    //     debugger;
+    //     imagesFiles = event.target.files;
+    //
+    //     $(imagesFiles).each(function () {
+    //         imagesFilesTmp = imagesFiles;
+    //     })
+    // })
+
+
+    // $("#uploadImages").on("change",function(event) {
+    //     debugger;
+    //     files = event.target.files;
+    // });
+
 
     $("#advertForm").submit(function(e) {
+
         e.preventDefault();
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
+
+        var categories = document.getElementById("categories");
+        var category = categories.options[categories.selectedIndex].text;
+
+        var user = $("#profile").html();
+        var formData = new FormData();
+        var files = $(".file")[0].files;
+        var checkAddedImg = false;
+        if (files.length > 0) {
+            checkAddedImg = "true";
+        }
+
+        var state = document.getElementById("state");
+        var choosedState = state.options[state.selectedIndex].text;
+        debugger;
         var obyavleniye = {
             title: $("input[name = 'title']").val(),
             price: $("input[name = 'price']").val(),
             description: $("input[name = 'description']").val(),
-            date: $("input[name = 'date']").val(),
             authorid: $("input[name = 'authorid']").val(),
-            category: $("input[name = 'category']").val(),
-            state: $("input[name = 'state']").val(),
-            img1: $("input[name = 'img1']").val(),
-            img2: $("input[name = 'img2']").val(),
-            img3: $("input[name = 'img3']").val(),
-            img4: $("input[name = 'img4']").val(),
+            category: category,
+            state: choosedState,
+            checkAddedImg: checkAddedImg,
         };
 
-        // var obyavleniye = {
-        //     title: "Title",
-        //     price: "80",
-        //     description: "normm",
-        //     date: "",
-        //     authorid: "2",
-        //     category: "A",
-        //     state: "new",
-        //     img1: "http",
-        //     img2: "http",
-        //     img3: "http",
-        //     img4: "http",
-        // };
         var post_data = JSON.stringify(obyavleniye);
         console.log(post_data);
 
         $.ajax({
-            url : "/upload",
+            url : "/saveAdvert",
             type: "POST",
             dataType: 'text',
             data: post_data,
@@ -66,5 +132,53 @@ $( document ).ready(function() {
                 console.log(data);
             }
         });
+
+        debugger;
+        // var x = files.length;
+
+        $.each(files, function (i, val) {
+            console.log("ind: " + i + ", val = " + val);
+            formData.append("files", val);
+        });
+
+        console.log("123:" + formData.getAll("files"));
+        $.ajax({
+            // url : "/upl",
+            url : "/uploadImages/" + user,
+            type: "POST",
+            dataType: 'text',
+            data: formData,
+            processData: false,
+            contentType: false,
+            // scriptCharset: "utf-8",
+            cache: false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            complete: function() {
+                console.log("Sent");
+            },
+            success: function (response) {
+                console.log("success");
+                console.log("response: " + response);
+            },
+            error: function (data) {
+                console.log("error");
+                console.log(data);
+            }
+        });
+
     });
+
 });
+
+
+
+
+function sendImages() {
+    debugger;
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
+
+}

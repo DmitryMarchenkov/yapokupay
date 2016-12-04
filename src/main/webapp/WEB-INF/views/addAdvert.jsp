@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
 <html>
 <head>
@@ -29,14 +30,19 @@
         </a>
 
         <div id="header_right">
-            <a href="/addAdvert">
-                <button type="button" class="btn btn-default">Добавить объявление</button>
-            </a>
             <div class="profile">
-                <a href="#" id="profile">Гость</a>
-                |
-                <a href="<c:url value="/login" />" id="login">Log In</a>
-                <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                <c:choose>
+                    <c:when test="${pageContext.request.userPrincipal.name != null}">
+                        <a href="/user/${pageContext.request.userPrincipal.name}" id="profile">${pageContext.request.userPrincipal.name}</a>
+                        |
+                        <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="#" id="profile">Гость</a>
+                        |
+                        <a href="<c:url value="/login" />" id="login">Log In</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
             <div class="dropdown">
@@ -48,6 +54,7 @@
             </div>
         </div>
     </div>
+
 
     <div id="content">
         <div class="page">
@@ -69,40 +76,34 @@
                         <td><input name="description" type="text"/></td>
                     </tr>
                     <tr>
-                        <td>date</td>
-                        <td><input name="date" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>authorid</td>
-                        <td><input name="authorid" type="text"/></td>
-                    </tr>
-                    <tr>
                         <td>category</td>
-                        <td><input name="category" type="text"/></td>
+                        <td>
+                            <select class="form-control" id="categories">
+                                <option>Авто</option>
+                                <option>Техника</option>
+                                <option>Недвижимость</option>
+                                <option>Одежда</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>state</td>
-                        <td><input name="state" type="text"/></td>
+                        <td>
+                            <select class="form-control" id="state">
+                                <option>Новый</option>
+                                <option>б/у</option>
+                            </select>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>img1</td>
-                        <td><input name="img1" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>img2</td>
-                        <td><input name="img2" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>img3</td>
-                        <td><input name="img3" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>img4</td>
-                        <td><input name="img4" type="text"/></td>
-                    </tr>
+
+                    <input type="file" class="file" name="file" multiple>
 
 
 
+
+
+
+                    <input hidden name="authorid" type="text" value="${pageContext.request.userPrincipal.name}"/>
                     <tr>
                         <td colspan="2">
                             <input type="submit" value="send"/>

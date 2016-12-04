@@ -30,10 +30,11 @@
             <a href="/addAdvert">
                 <button type="button" class="btn btn-default">Добавить объявление</button>
             </a>
+
             <div class="profile">
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
-                        <a href="#" id="profile">${pageContext.request.userPrincipal.name}</a>
+                        <a href="/user/${pageContext.request.userPrincipal.name}" id="profile">${pageContext.request.userPrincipal.name}</a>
                         |
                         <a href="<c:url value="/logout" />" id="logout">Log Out</a>
                     </c:when>
@@ -61,20 +62,15 @@
         </div>
     </div>
 
-        <%--<c:set var="showCategories" scope="request" value="true" />--%>
-        <%--<c:set var="category" scope="request" value="${category}" />--%>
-       <%--<jsp:include page="header.jsp"/>--%>
-
     <div id="content">
         <div class="page">
             <c:if test="${!empty listAdverts}">
                 <p>Все товары в категории <strong>${category}</strong></p>
                     <c:forEach items="${listAdverts}" var="advert">
                         <div class="advertItem">
-
                             <c:choose>
-                                <c:when test="${!empty advert.img1}">
-                                    <img src="/resources/images/advertsImages/${advert.img1}">
+                                <c:when test="${advert.checkAddedImg}">
+                                    <img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/titleImage.jpg">
                                 </c:when>
                                 <c:otherwise>
                                     <img src="/resources/images/bg-about.jpg">

@@ -1,5 +1,4 @@
 body {
-    background-color: #fff;
     overflow-x: hidden;
 }
 
@@ -138,13 +137,47 @@ a {
 
 footer {
     bottom: 0px;
-    position: absolute;
     width: 100%;
     left: 0px;
-    margin-bottom: 5px;
+    position: fixed;
+    background: #d9f4d1;
 }
 
 footer p {
     text-align: center;
+    margin: 3px 0;
+}
+
+
+#dropZone {
+    color: #555;
+    font-size: 18px;
+    text-align: center;
+
+    width: 400px;
+    padding: 50px 0;
+    margin: 50px auto;
+
+    background: #eee;
+    border: 1px solid #ccc;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#dropZone.hover {
+    background: #ddd;
+    border-color: #aaa;
+}
+
+#dropZone.error {
+    background: #faa;
+    border-color: #f00;
+}
+
+#dropZone.drop {
+    background: #afa;
+    border-color: #0f0;
 }
 

@@ -38,4 +38,17 @@ public class AdvertDAOImpl implements AdvertDAO {
         session.persist(a);
         session.flush();
     }
+
+    @Override
+    public Advert getAdvertById(Integer id) {
+        Session session = this.sessionFactory.openSession();
+        Query query = session.createQuery("from Advert where id = :advertid");
+        query.setParameter("advertid", id);
+
+        List<Advert> advertsList = query.list();
+        if (advertsList.size() > 0) {
+            return advertsList.get(0);
+        }
+        return null;
+    }
 }

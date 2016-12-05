@@ -89,10 +89,6 @@ $( document ).ready(function() {
         var user = $("#profile").html();
         var formData = new FormData();
         var files = $(".file")[0].files;
-        var checkAddedImg = false;
-        if (files.length > 0) {
-            checkAddedImg = "true";
-        }
 
         var state = document.getElementById("state");
         var choosedState = state.options[state.selectedIndex].text;
@@ -104,7 +100,7 @@ $( document ).ready(function() {
             authorid: $("input[name = 'authorid']").val(),
             category: category,
             state: choosedState,
-            checkAddedImg: checkAddedImg,
+            imagesCount: files.length,
         };
 
         var post_data = JSON.stringify(obyavleniye);

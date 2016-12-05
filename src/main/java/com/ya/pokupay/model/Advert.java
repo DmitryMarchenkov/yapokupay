@@ -35,7 +35,7 @@ public class Advert implements Serializable{
 
     private String state;
 
-    private String checkAddedImg;
+    private Integer imagesCount;
 
     public int getId() {
         return id;
@@ -109,12 +109,12 @@ public class Advert implements Serializable{
         this.state = state;
     }
 
-    public String getCheckAddedImg() {
-        return checkAddedImg;
+    public Integer getImagesCount() {
+        return imagesCount;
     }
 
-    public void setCheckAddedImg(String checkAddedImg) {
-        this.checkAddedImg = checkAddedImg;
+    public void setImagesCount(Integer imagesCount) {
+        this.imagesCount = imagesCount;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class Advert implements Serializable{
                 ", authorUsername='" + authorUsername + '\'' +
                 ", category='" + category + '\'' +
                 ", state='" + state + '\'' +
-                ", isAddedImg=" + checkAddedImg +
+                ", imagesCount=" + imagesCount +
                 '}';
     }
 }

@@ -6,7 +6,9 @@ import com.ya.pokupay.model.Advert;
 
 public interface AdvertDAO {
 
-    public List<Advert> listAdverts(String category);
-    public void addAdvert(Advert a);
+    List<Advert> listAdverts(String category);
 
+    void addAdvert(Advert a);
+
+    Advert getAdvertById(Integer id);
 }

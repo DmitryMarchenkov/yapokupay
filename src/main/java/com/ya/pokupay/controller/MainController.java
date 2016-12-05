@@ -7,6 +7,10 @@ import com.ya.pokupay.service.SecurityService;
 import com.ya.pokupay.service.UserService;
 import com.ya.pokupay.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -17,9 +21,15 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -109,12 +119,12 @@ public class MainController {
         for (int i = 0; i < files.size(); i++) {
             try {
                 MultipartFile multiFile = files.get(i);
-                String fileName = multiFile.getOriginalFilename();
+//                String fileName = multiFile.getOriginalFilename();
 
-                int index = fileName.lastIndexOf(".");
-                String res = "." + fileName.substring(index + 1, fileName.length());
-                if (i == 0) res = ".jpg";
-                fileName = i + res;
+//                int index = fileName.lastIndexOf(".");
+//                String res = "." + fileName.substring(index + 1, fileName.length());
+//                if (i == 0) res = ".jpg";
+                String fileName = i + ".jpg";
 
                 //making directories for our required path.
                 byte[] bytes = multiFile.getBytes();
@@ -172,6 +182,98 @@ public class MainController {
         User user = userService.findByUsername(username);
         model.addAttribute("user", user);
         return "userPage";
+    }
+
+    @RequestMapping(value = "/obyavleniye/{advertid}", method = RequestMethod.GET)
+    public String userPage(@PathVariable("advertid") Integer advertid, Model model, HttpServletRequest request) throws Exception {
+        Advert advert = advertService.getAdvertById(advertid);
+        model.addAttribute("advert", advert);
+/*
+
+        List<MultipartFile> files = null;
+        String contextPath = request.getSession().getServletContext().getRealPath("");
+        File directory = new File(contextPath.substring(0,contextPath.length() - 17) + "/src/main/webapp/resources/uploadImages/" + advert.getAuthorUsername() + "/");
+
+//        for (int i = 0; i < files.size(); i++) {
+            try {
+//                MultipartFile multiFile = files.get(i);
+//                 fileName = multiFile.getOriginalFilename();
+
+//                int index = fileName.lastIndexOf(".");
+//                String res = "." + fileName.substring(index + 1, fileName.length());
+//                if (i == 0) res = ".jpg";
+                String res = ".jpg";
+                String fileName = 0 + res;
+
+                //making directories for our required path.
+//                byte[] bytes = multiFile.se;
+//                directory.mkdirs();
+
+                // saving the file
+                File file = new File(directory + System.getProperty("file.separator") + fileName);
+                BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
+                stream.read();
+                stream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Exception("Error while loading the file");
+            }
+
+        String res = ".jpg";
+        String fileName = 0 + res;
+        File file = new File(directory + System.getProperty("file.separator") + fileName);
+
+
+*/
+
+//        String rootPath = System.getProperty("catalina.home");
+//        Book book = bookService.getBookById(Long.parseLong(bookId));
+//        String format = book.getImageSource().split("\\.")[1];
+/*
+
+        ByteArrayOutputStream out = null;
+        InputStream input = null;
+        try{
+            out = new ByteArrayOutputStream();
+            input = new BufferedInputStream(new FileInputStream(file));
+            int data = 0;
+            while ((data = input.read()) != -1){
+                out.write(data);
+            }
+        }
+        finally{
+            if (null != input){
+                input.close();
+            }
+            if (null != out){
+                out.close();
+            }
+        }
+        byte[] bytes = out.toByteArray();
+
+*/
+
+
+//        final HttpHeaders headers = new HttpHeaders();
+//        if (format.equals("png"))
+//            headers.setContentType(MediaType.IMAGE_PNG);
+//        if (format.equals("jpg"))
+//            headers.setContentType(MediaType.IMAGE_JPEG);
+//        if (format.equals("gif"))
+//            headers.setContentType(MediaType.IMAGE_GIF);
+//
+//        return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.CREATED);
+//        }
+//        Image image = ImageIO.read(new File(String.valueOf(file)));
+//        Image image1 = new ImageIcon(String.valueOf(file)).getImage();
+
+//        List<String> countImg = new ArrayList<>(advert.getId());
+        List<Integer> imagesCount = Arrays.asList(new Integer[advert.getImagesCount()]);
+
+//        model.addAttribute("image", image);
+//        model.addAttribute("image1", image1);
+        model.addAttribute("imagesCount", imagesCount);
+        return "advertPage";
     }
 
 

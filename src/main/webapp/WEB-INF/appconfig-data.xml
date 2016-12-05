@@ -16,6 +16,13 @@
         <beans:property name="url" value="#{application.url}" />
         <beans:property name="username" value="#{application.username}" />
         <beans:property name="password" value="#{application.password}" />
+
+        <beans:property name="maxIdle" value="-1"/>
+        <beans:property name="maxActive" value="-1"/>
+        <beans:property name="maxOpenPreparedStatements" value="-1"/>
+        <beans:property name="maxWait" value="20000"/>
+        <beans:property name="validationQuery" value="SELECT 1"/>
+        <beans:property name="testOnBorrow" value="true"/>
     </beans:bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->

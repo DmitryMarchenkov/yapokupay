@@ -69,8 +69,10 @@
                     <c:forEach items="${listAdverts}" var="advert">
                         <div class="advertItem">
                             <c:choose>
-                                <c:when test="${advert.checkAddedImg}">
-                                    <img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/titleImage.jpg">
+                                <c:when test="${advert.imagesCount > 0}">
+                                    <a href="/obyavleniye/${advert.id}">
+                                        <img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/0.jpg">
+                                    </a>
                                 </c:when>
                                 <c:otherwise>
                                     <img src="/resources/images/bg-about.jpg">

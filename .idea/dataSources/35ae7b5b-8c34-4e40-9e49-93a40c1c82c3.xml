@@ -44,8 +44,8 @@
     <column id="21" parent="9" name="authorUsername">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="22" parent="9" name="checkAddedImg">
-      <data-type>varchar(6)|0</data-type>
+    <column id="22" parent="9" name="imagesCount">
+      <data-type>int(11)|0</data-type>
     </column>
     <key id="23" parent="9" name="PRIMARY">
       <columns>id</columns>

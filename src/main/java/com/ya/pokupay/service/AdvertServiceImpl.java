@@ -54,6 +54,11 @@ public class AdvertServiceImpl implements AdvertService {
         this.advertDAO.addAdvert(advert);
     }
 
+    @Override
+    public Advert getAdvertById(Integer id) {
+        return this.advertDAO.getAdvertById(id);
+    }
+
     private static DateFormatSymbols myDateFormatSymbols = new DateFormatSymbols(){
 
         @Override

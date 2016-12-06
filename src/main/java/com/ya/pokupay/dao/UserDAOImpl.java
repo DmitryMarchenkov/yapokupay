@@ -34,5 +34,13 @@ public class UserDAOImpl implements UserDAO{
         Session session = this.sessionFactory.openSession();
         session.save(user);
         session.flush();
+        session.update(user);
+    }
+
+    @Override
+    public void update(User user) {
+        Session session = this.sessionFactory.openSession();
+        session.update(user);
+        session.flush();
     }
 }

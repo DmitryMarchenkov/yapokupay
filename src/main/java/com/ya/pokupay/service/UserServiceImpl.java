@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setConfirmed(false);
         Set<Role> roles = new HashSet<>();
         roles.add(roleDao.getOne(1L));
         user.setRoles(roles);
@@ -39,5 +40,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public void confirmRegistration(String username) {
+        User user = userDao.findByUsername(username);
+        user.setConfirmed(true);
+        user.setToken(null);
+        userDao.update(user);
     }
 }

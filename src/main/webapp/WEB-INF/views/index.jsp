@@ -36,12 +36,12 @@
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
                         <a href="/user/${pageContext.request.userPrincipal.name}" id="profile">${pageContext.request.userPrincipal.name}</a>
                         |
-                        <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                        <a href="<c:url value="/logout" />" id="logout">Выход</a>
                     </c:when>
                     <c:otherwise>
                         <a href="#" id="profile">Гость</a>
                         |
-                        <a href="<c:url value="/login" />" id="login">Log In</a>
+                        <a href="<c:url value="/login" />" id="login">Вход</a>
                     </c:otherwise>
                 </c:choose>
             </div>

@@ -7,4 +7,6 @@ public interface UserService {
     void save(User user);
 
     User findByUsername(String username);
+
+    void confirmRegistration(String username);
 }

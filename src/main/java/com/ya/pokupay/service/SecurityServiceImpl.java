@@ -1,19 +1,24 @@
 package com.ya.pokupay.service;
 
+import com.ya.pokupay.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @Service
 public class SecurityServiceImpl implements SecurityService {
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -25,21 +30,17 @@ public class SecurityServiceImpl implements SecurityService {
         if (userDetails instanceof UserDetails) {
             return ((UserDetails) userDetails).getUsername();
         }
-
         return null;
     }
 
     @Override
-    public void autoLogin(String username, String password) {
-        System.out.println("AUTOLIGIN");
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+    public void autoLogin(User user) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
 
-        authenticationManager.authenticate(authenticationToken);
-
-        if (authenticationToken.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        }
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(
+                        user.getUsername(),
+                        user.getPassword(),
+                        userDetails.getAuthorities()));
     }
 }

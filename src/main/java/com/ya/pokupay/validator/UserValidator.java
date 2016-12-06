@@ -23,6 +23,22 @@ public class UserValidator implements Validator{
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
+        /*Validate first name*/
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Required");
+        if (user.getFirstName().length() < 2 || user.getFirstName().length() > 32) {
+            errors.rejectValue("firstName", "Size.userForm.name");
+        }
+
+        /*Validate last name*/
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "Required");
+        if (user.getLastName().length() < 2 || user.getLastName().length() > 32) {
+            errors.rejectValue("lastName", "Size.userForm.name");
+        }
+
+        /*Validate phone*/
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "Required");
+
+        /*Validate username*/
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Required");
         if (user.getUsername().length() < 5 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
@@ -32,6 +48,7 @@ public class UserValidator implements Validator{
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
+        /*Validate password*/
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
@@ -41,6 +58,10 @@ public class UserValidator implements Validator{
             errors.rejectValue("confirmPassword", "Different.userForm.password");
         }
 
-
+        /*Validate email*/
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
+        if (user.getEmail().length() < 8 || user.getEmail().length() > 40) {
+            errors.rejectValue("email", "Size.userForm.email");
+        }
     }
 }

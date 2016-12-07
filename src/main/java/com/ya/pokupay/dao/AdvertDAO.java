@@ -10,5 +10,7 @@ public interface AdvertDAO {
 
     void addAdvert(Advert a);
 
+    void updateAdvert(Advert a);
+
     Advert getAdvertById(Integer id);
 }

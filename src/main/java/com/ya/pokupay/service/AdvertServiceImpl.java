@@ -49,9 +49,15 @@ public class AdvertServiceImpl implements AdvertService {
 
         advert.setAuthorid(authorId.toString());
         advert.setAuthorUsername(username);
-
+        advert.setViewCounter(0);
 
         this.advertDAO.addAdvert(advert);
+    }
+
+    @Override
+    public void increaseViewCounter(Advert advert) {
+        advert.setViewCounter(advert.getViewCounter() + 1);
+        this.advertDAO.updateAdvert(advert);
     }
 
     @Override

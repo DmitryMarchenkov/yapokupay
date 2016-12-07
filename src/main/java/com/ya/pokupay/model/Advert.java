@@ -35,6 +35,8 @@ public class Advert implements Serializable{
 
     private String state;
 
+    private Integer viewCounter;
+
     private Integer imagesCount;
 
     public int getId() {
@@ -107,6 +109,14 @@ public class Advert implements Serializable{
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public Integer getViewCounter() {
+        return viewCounter;
+    }
+
+    public void setViewCounter(Integer viewCounter) {
+        this.viewCounter = viewCounter;
     }
 
     public Integer getImagesCount() {

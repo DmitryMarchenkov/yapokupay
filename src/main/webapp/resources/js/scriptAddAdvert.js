@@ -92,9 +92,10 @@ $( document ).ready(function() {
 
         var state = document.getElementById("state");
         var choosedState = state.options[state.selectedIndex].text;
+        var title = $("input[name = 'title']").val();
         debugger;
         var obyavleniye = {
-            title: $("input[name = 'title']").val(),
+            title: title,
             price: $("input[name = 'price']").val(),
             description: $("input[name = 'description']").val(),
             authorid: $("input[name = 'authorid']").val(),
@@ -140,7 +141,7 @@ $( document ).ready(function() {
         console.log("123:" + formData.getAll("files"));
         $.ajax({
             // url : "/upl",
-            url : "/uploadImages/" + user,
+            url : "/uploadImages/" + user + "/" + title,
             type: "POST",
             dataType: 'text',
             data: formData,

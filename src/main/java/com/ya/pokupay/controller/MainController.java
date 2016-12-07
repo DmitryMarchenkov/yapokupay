@@ -10,7 +10,6 @@ import com.ya.pokupay.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,9 +42,6 @@ public class MainController {
 
     @Autowired
     private EmailService emailService;
-
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping(value =  {"/", "/all"}, method = RequestMethod.GET)
     public String index(Model model) {
@@ -138,11 +134,18 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/uploadImages/{user}", method = RequestMethod.POST)
-    public String uploadImages (@PathVariable("user") String username, MultipartHttpServletRequest request) throws Exception {
+    @RequestMapping(value="/uploadImages/{user}/{title}", method = RequestMethod.POST)
+    public String uploadImages (MultipartHttpServletRequest request,
+                                @PathVariable("user") String username,
+                                @PathVariable("title") String title) throws Exception {
         List<MultipartFile> files = request.getFiles("files");
-        String contextPath = request.getSession().getServletContext().getRealPath("");
-        File directory = new File(contextPath.substring(0,contextPath.length() - 17) + "/src/main/webapp/resources/uploadImages/" + username + "/");
+//        String contextPath = request.getSession().getServletContext().getRealPath("");
+//        File directory = new File(contextPath.substring(0,contextPath.length() - 17) + "/src/main/webapp/resources/uploadImages/" + username + "/");
+
+        String contextPath = System.getProperty("catalina.home");
+        File directory = new File(contextPath + "/resources/uploadImages/" + username + "/" + title + "/");
+
+
 
         for (int i = 0; i < files.size(); i++) {
             try {
@@ -163,7 +166,8 @@ public class MainController {
                 throw new Exception("Error while loading the file");
             }
         }
-        return "success";
+//        return "success";
+        return "redirect:/all";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -203,7 +207,7 @@ public class MainController {
             @PathVariable("username") String username,
             @PathVariable("token") String token,
             Model model,
-            HttpServletRequest request) throws Exception {
+            HttpServletRequest request) {
 
         User user = userService.findByUsername(username);
         if (user.getToken() != null) {
@@ -215,6 +219,13 @@ public class MainController {
         return "confirmRegistration";
     }
 
+    @RequestMapping(value = "/increaseViewCount/{advertid}", method = RequestMethod.POST)
+    public String viewCounter(@PathVariable("advertid") Integer advertid) {
+
+        Advert advert = advertService.getAdvertById(advertid);
+        advertService.increaseViewCounter(advert);
+        return "viewCounterIncreased";
+    }
 
     public static String generateString(int length)
     {

@@ -71,7 +71,7 @@
                             <c:choose>
                                 <c:when test="${advert.imagesCount > 0}">
                                     <a href="/obyavleniye/${advert.id}">
-                                        <img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/0.jpg">
+                                        <img src="/images/${advert.authorUsername}/${advert.title}/0.jpg">
                                     </a>
                                 </c:when>
                                 <c:otherwise>

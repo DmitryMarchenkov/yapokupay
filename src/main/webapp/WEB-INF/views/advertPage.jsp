@@ -19,6 +19,9 @@
     <script src="${contextPath}/resources/js/script.js"></script>
     <script src="${contextPath}/resources/js/scriptShowAdvert.js"></script>
 
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
 </head>
 <body>
 
@@ -56,15 +59,17 @@
 
     <div id="content">
         <div class="page">
+            <input type="hidden" name="advertId" value="${advert.id}">
             ${advert.id}<br/>
             ${advert.title}<br/>
             ${advert.price}<br/>
             ${advert.description}<br/>
+            Просмотров: ${advert.viewCounter}
 
                 <div class="slider">
                     <ul>
                         <c:forEach items="${imagesCount}" var="i" varStatus="loop">
-                            <li><img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/${loop.index}.jpg" alt=""></li>
+                            <li><img src="/images/${advert.authorUsername}/${advert.title}/${loop.index}.jpg" alt=""></li>
                         </c:forEach>
                         <%--${image}<br/>--%>
                         <%--${image1}<br/>--%>

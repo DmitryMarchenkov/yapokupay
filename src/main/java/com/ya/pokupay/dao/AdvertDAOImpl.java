@@ -40,6 +40,13 @@ public class AdvertDAOImpl implements AdvertDAO {
     }
 
     @Override
+    public void updateAdvert(Advert a) {
+        Session session = this.sessionFactory.openSession();
+        session.update(a);
+        session.flush();
+    }
+
+    @Override
     public Advert getAdvertById(Integer id) {
         Session session = this.sessionFactory.openSession();
         Query query = session.createQuery("from Advert where id = :advertid");

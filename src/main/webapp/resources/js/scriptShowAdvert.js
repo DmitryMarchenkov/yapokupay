@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+    setTimeout(increaseViewCounter, 2000);
+
     $(document).ready(function() {
         $(".slider").each(function () { // обрабатываем каждый слайдер
             var obj = $(this);
@@ -25,3 +27,35 @@ $( document ).ready(function() {
         return false;
     });
 })
+
+function increaseViewCounter() {
+    // debugger;
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
+    var advertId = $("input[name='advertId']").attr("value");
+
+    $.ajax({
+        url : "/increaseViewCount/" + advertId,
+        type: "POST",
+        dataType: 'text',
+        data: 'increaseViewCount',
+        processData: false,
+        contentType: false,
+        cache: false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
+        complete: function() {
+            console.log("Sent");
+        },
+        success: function (response) {
+            console.log("success");
+            console.log("response: " + response);
+        },
+        error: function (data) {
+            console.log("error");
+            console.log(data);
+        }
+    });
+}

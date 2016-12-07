@@ -11,6 +11,7 @@
 	<annotation-driven />
 
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/images/**" location="file:${catalina.home}/resources/uploadImages/" cache-period="1234" />
 
     <context:component-scan base-package="com.ya.pokupay" />
 

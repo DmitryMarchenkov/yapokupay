@@ -8,7 +8,7 @@ public interface AdvertDAO {
 
     List<Advert> listAdverts(String category);
 
-    void addAdvert(Advert a);
+    Advert addAdvert(Advert a);
 
     void updateAdvert(Advert a);
 

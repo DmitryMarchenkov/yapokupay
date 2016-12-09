@@ -22,21 +22,22 @@ public class AdvertDAOImpl implements AdvertDAO {
     public List<Advert> listAdverts(String category) {
         Query query;
         Session session = this.sessionFactory.getCurrentSession();
-        if (category.equals("Все категории")) {
-            query = session.createQuery("from Advert");
-        } else {
+        if (category != null) {
             query = session.createQuery("from Advert where category = :category");
             query.setParameter("category", category);
+        } else {
+            query = session.createQuery("from Advert");
         }
         List<Advert> advertsList = query.list();
         return advertsList;
     }
 
     @Override
-    public void addAdvert(Advert a) {
+    public Advert addAdvert(Advert a) {
         Session session = this.sessionFactory.openSession();
         session.persist(a);
         session.flush();
+        return a;
     }
 
     @Override
@@ -44,6 +45,7 @@ public class AdvertDAOImpl implements AdvertDAO {
         Session session = this.sessionFactory.openSession();
         session.update(a);
         session.flush();
+
     }
 
     @Override

@@ -66,13 +66,28 @@
         <div class="page">
             <c:if test="${!empty listAdverts}">
                 <p>Все товары в категории <strong>${category}</strong></p>
-                    <c:forEach items="${listAdverts}" var="advert">
-                        <div class="advertItem">
-                            <c:choose>
-                                <c:when test="${advert.imagesCount > 0}">
-                                    <a href="/obyavleniye/${advert.id}">
-                                        <img src="/images/${advert.authorUsername}/${advert.title}/0.jpg">
-                                    </a>
+                <%--cat: ${imagesDirectory} ****--%>
+                <c:forEach items="${listAdverts}" var="advert">
+                    <div class="advertItem">
+                        <c:choose>
+                            <c:when test="${advert.imagesCount > 0}">
+                                <%--<div><a href="/obyavleniye/${advert.id}">${advert.title}</a>--%>
+                                <%--</div>--%>
+                                            <%--<img src="/images/${advert.authorUsername}/${advert.title}/0.jpg">--%>
+                                            <%--<img src="/image/${advert.authorUsername}/${advert.title}/">--%>
+
+
+
+                                            <%--<img src="${imagesDirectory}/resources/uploadImages/${advert.authorUsername}/${advert.title}/0.jpg">--%>
+                                            <%--***--%>
+                                            <%--<img src="${pageContext.request.contextPath}/imageServlet?advertid=${advert.id}">--%>
+                                            <%--<img src="${pageContext.request.contextPath}/imageServlet?advertid=${row.id}">--%>
+                                            <%--132--%>
+                                            <%--<img src="${pageContext.request.contextPath}/images/foo.png">--%>
+                                            <%--<img src="data:image/jpg;base64,${advert.base64imageFile}" alt="image"/>--%>
+                                            <%--****--%>
+
+
                                 </c:when>
                                 <c:otherwise>
                                     <img src="/resources/images/bg-about.jpg">
@@ -80,7 +95,9 @@
                             </c:choose>
 
                             <div class="advertInfo">
-                                <h2>${advert.title}</h2>
+                                <a href="/obyavleniye/${advert.id}">
+                                    <h2>${advert.title}</h2>
+                                </a>
                                 <p>${advert.date}</p>
                             </div>
                             <div class="advertPrice">

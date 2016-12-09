@@ -85,9 +85,8 @@ $( document ).ready(function() {
 
         var categories = document.getElementById("categories");
         var category = categories.options[categories.selectedIndex].text;
-
         var user = $("#profile").html();
-        var formData = new FormData();
+
         var files = $(".file")[0].files;
 
         var state = document.getElementById("state");
@@ -121,43 +120,12 @@ $( document ).ready(function() {
                 console.log("Sent");
             },
             success: function (response) {
+                debugger;
+                // var advert = $.parseJSON(response);
+                sendImages(user, title);
                 console.log("success");
                 console.log("response: " + response);
-            },
-            error: function (data) {
-                console.log("error");
-                console.log(data);
-            }
-        });
 
-        debugger;
-        // var x = files.length;
-
-        $.each(files, function (i, val) {
-            console.log("ind: " + i + ", val = " + val);
-            formData.append("files", val);
-        });
-
-        console.log("123:" + formData.getAll("files"));
-        $.ajax({
-            // url : "/upl",
-            url : "/uploadImages/" + user + "/" + title,
-            type: "POST",
-            dataType: 'text',
-            data: formData,
-            processData: false,
-            contentType: false,
-            // scriptCharset: "utf-8",
-            cache: false,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader(header, token);
-            },
-            complete: function() {
-                console.log("Sent");
-            },
-            success: function (response) {
-                console.log("success");
-                console.log("response: " + response);
             },
             error: function (data) {
                 console.log("error");
@@ -172,10 +140,45 @@ $( document ).ready(function() {
 
 
 
-function sendImages() {
+function sendImages(user, title) {
     debugger;
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
+
+    var formData = new FormData();
+    var files = $(".file")[0].files;
+    debugger;
+
+    $.each(files, function (i, val) {
+        console.log("ind: " + i + ", val = " + val);
+        formData.append("files", val);
+    });
+
+    console.log("123:" + formData.getAll("files"));
+    $.ajax({
+        url : "/uploadImages/" + user + "/" + title,
+        type: "POST",
+        dataType: 'text',
+        data: formData,
+        processData: false,
+        contentType: false,
+        // scriptCharset: "utf-8",
+        cache: false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
+        complete: function() {
+            console.log("Sent");
+        },
+        success: function (response) {
+            console.log("success");
+            console.log("response: " + response);
+        },
+        error: function (data) {
+            console.log("error");
+            console.log(data);
+        }
+    });
 
 
 }

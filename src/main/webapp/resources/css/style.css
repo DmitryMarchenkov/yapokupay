@@ -101,6 +101,8 @@ a {
 .advertItem {
     margin: 30px 10px;
     position: relative;
+    min-height: 100px;
+    border: 1px solid #72e155;
 }
 
 .advertItem img {

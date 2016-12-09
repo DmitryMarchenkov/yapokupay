@@ -4,10 +4,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
     <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/appconfig-root.xml</param-value>
-    </context-param>
 
     <filter>
         <filter-name>encoding-filter</filter-name>
@@ -28,6 +24,11 @@
         <filter-name>encoding-filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/appconfig-root.xml</param-value>
+    </context-param>
 
     <!--Security-->
     <filter>

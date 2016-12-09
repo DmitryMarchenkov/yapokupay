@@ -1,11 +1,6 @@
 package com.ya.pokupay.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -38,6 +33,9 @@ public class Advert implements Serializable{
     private Integer viewCounter;
 
     private Integer imagesCount;
+
+    @Transient
+    private String base64imageFile;
 
     public int getId() {
         return id;
@@ -125,6 +123,14 @@ public class Advert implements Serializable{
 
     public void setImagesCount(Integer imagesCount) {
         this.imagesCount = imagesCount;
+    }
+
+    public String getBase64imageFile() {
+        return base64imageFile;
+    }
+
+    public void setBase64imageFile(String base64imageFile) {
+        this.base64imageFile = base64imageFile;
     }
 
     @Override

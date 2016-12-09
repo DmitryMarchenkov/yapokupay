@@ -61,16 +61,33 @@
         <div class="page">
             <input type="hidden" name="advertId" value="${advert.id}">
             ${advert.id}<br/>
+            <%--<img src="data:image/jpeg;base64,${image.base64imageFile}" alt="${image.name}">--%>
             ${advert.title}<br/>
             ${advert.price}<br/>
             ${advert.description}<br/>
             Просмотров: ${advert.viewCounter}
 
-                <div class="slider">
-                    <ul>
-                        <c:forEach items="${imagesCount}" var="i" varStatus="loop">
-                            <li><img src="/images/${advert.authorUsername}/${advert.title}/${loop.index}.jpg" alt=""></li>
-                        </c:forEach>
+                <%--<div class="slider">--%>
+                    <%--<ul>--%>
+
+                        <%--<c:forEach items="${imagesCount}" var="i" varStatus="loop">--%>
+                            <%--<li><img src="/images/${advert.authorUsername}/${advert.title}/${loop.index}.jpg" alt=""></li>--%>
+                        <%--</c:forEach>--%>
+
+
+
+
+
+
+
+
+
+                        <%--<c:forEach items="${images}" var="image">--%>
+                            <%--<li><img src="data:image/jpg;base64,${image.base64imageFile}" alt="image"></li>--%>
+                        <%--</c:forEach>--%>
+
+
+
                         <%--${image}<br/>--%>
                         <%--${image1}<br/>--%>
                         <%--<img src="${image}" />--%>
@@ -83,8 +100,8 @@
                             <%--&lt;%&ndash;*: ${loop}<br/>&ndash;%&gt;--%>
                             <%--&lt;%&ndash;*: ${i.index}<br/>&ndash;%&gt;--%>
                         <%--</c:forEach>--%>
-                    </ul>
-                </div>
+                    <%--</ul>--%>
+                <%--</div>--%>
         </div>
     </div>
 

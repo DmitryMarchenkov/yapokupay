@@ -34,6 +34,7 @@
                 <beans:value>com.ya.pokupay.model.Advert</beans:value>
                 <beans:value>com.ya.pokupay.model.User</beans:value>
                 <beans:value>com.ya.pokupay.model.Role</beans:value>
+                <beans:value>com.ya.pokupay.model.Image</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -68,6 +69,14 @@
 
     <beans:bean id="UserDAO" class="com.ya.pokupay.dao.UserDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+
+    <beans:bean id="imageDAO" class="com.ya.pokupay.dao.ImageDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+
+    <beans:bean id="imageService" class="com.ya.pokupay.service.ImageServiceImpl">
+        <beans:property name="imageDAO" ref="imageDAO" />
     </beans:bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>

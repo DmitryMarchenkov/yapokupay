@@ -36,20 +36,20 @@ public class AdvertServiceImpl implements AdvertService {
     @Transactional
     public List<Advert> listAdverts(String category) {
         List<Advert> advertList = this.advertDAO.listAdverts(category);
-        if (advertList.isEmpty()) return null;
-
-        for (int i = 0; i < advertList.size(); i++) {
-            Advert advert = advertList.get(i);
-            String advertImageBase64;
-            Image advertImage = imageService.getOneImageByAdvertId(advert.getId());
-            if (advertImage != null) {
-                advertImageBase64 = advertImage.getBase64imageFile();
-            } else {
-                Image noImage = imageService.getOneImageByAdvertId(0);
-                advertImageBase64 = noImage.getBase64imageFile();
-            }
-            advert.setBase64imageFile(advertImageBase64);
-        }
+//        if (advertList.isEmpty()) return null;
+//
+//        for (int i = 0; i < advertList.size(); i++) {
+//            Advert advert = advertList.get(i);
+//            String advertImageBase64;
+//            Image advertImage = imageService.getOneImageByAdvertId(advert.getId());
+//            if (advertImage != null) {
+//                advertImageBase64 = advertImage.getBase64imageFile();
+//            } else {
+//                Image noImage = imageService.getOneImageByAdvertId(0);
+//                advertImageBase64 = noImage.getBase64imageFile();
+//            }
+//            advert.setBase64imageFile(advertImageBase64);
+//        }
         return advertList;
     }
 

@@ -61,47 +61,28 @@
         <div class="page">
             <input type="hidden" name="advertId" value="${advert.id}">
             ${advert.id}<br/>
-            <%--<img src="data:image/jpeg;base64,${image.base64imageFile}" alt="${image.name}">--%>
             ${advert.title}<br/>
             ${advert.price}<br/>
             ${advert.description}<br/>
+            ${imageNotFound}
             Просмотров: ${advert.viewCounter}
+                <div class="slider">
+                        <c:choose>
+                            <c:when test="${imageNotFound}">
+                                <img src="/resources/images/image_not_found.png">
+                            </c:when>
+                            <c:otherwise>
+                                <ul>
+                                    <c:forEach items="${imagesIds}" var="imageId" varStatus="loop">
+                                        <li>
+                                            <img src="/imagesDisplay?id=${imageId}" alt=""/>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:otherwise>
+                        </c:choose>
 
-                <%--<div class="slider">--%>
-                    <%--<ul>--%>
-
-                        <%--<c:forEach items="${imagesCount}" var="i" varStatus="loop">--%>
-                            <%--<li><img src="/images/${advert.authorUsername}/${advert.title}/${loop.index}.jpg" alt=""></li>--%>
-                        <%--</c:forEach>--%>
-
-
-
-
-
-
-
-
-
-                        <%--<c:forEach items="${images}" var="image">--%>
-                            <%--<li><img src="data:image/jpg;base64,${image.base64imageFile}" alt="image"></li>--%>
-                        <%--</c:forEach>--%>
-
-
-
-                        <%--${image}<br/>--%>
-                        <%--${image1}<br/>--%>
-                        <%--<img src="${image}" />--%>
-                        <%--<img src="${image1}" />--%>
-
-                        <%--<c:forEach items="${countImg}" var="i" varStatus="loop"><br/>--%>
-                            <%--*: ${loop.index}<br/>--%>
-                            <%--*: ${i}<br/>--%>
-                            <%--<li><img src="${contextPath}/resources/uploadImages/${advert.authorUsername}/${loop.index}.jpg" alt=""></li>--%>
-                            <%--&lt;%&ndash;*: ${loop}<br/>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;*: ${i.index}<br/>&ndash;%&gt;--%>
-                        <%--</c:forEach>--%>
-                    <%--</ul>--%>
-                <%--</div>--%>
+                </div>
         </div>
     </div>
 

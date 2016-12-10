@@ -5,8 +5,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ImageDAOImpl implements ImageDAO {
@@ -18,9 +16,9 @@ public class ImageDAOImpl implements ImageDAO {
     }
 
     @Override
-    public void save(List<Image> image) {
+    public void save(Image image) {
         Session session = this.sessionFactory.openSession();
-        session.persist(image.get(0));
+        session.persist(image);
         session.flush();
     }
 
@@ -34,11 +32,22 @@ public class ImageDAOImpl implements ImageDAO {
     }
 
     @Override
-    public Image getOneImage(Integer id) {
+    public Image getOneImageByAdvertId(Integer id) {
         Session session = this.sessionFactory.openSession();
         Query query = session.createQuery("from Image where advertid = :advertid");
         query.setParameter("advertid", id);
         query.setMaxResults(1);
+        List<Image> imageList = query.list();
+        if (imageList.isEmpty()) return null;
+        return imageList.get(0);
+    }
+
+    @Override
+    public Image getImageById(Integer id) {
+        Session session = this.sessionFactory.openSession();
+        Query query = session.createQuery("from Image where id = :id");
+        query.setParameter("id", id);
+
         List<Image> imageList = query.list();
         if (imageList.isEmpty()) return null;
         return imageList.get(0);

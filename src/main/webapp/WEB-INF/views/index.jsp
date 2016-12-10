@@ -64,35 +64,21 @@
 
     <div id="content">
         <div class="page">
+            <%--<img src="/imageDisplay?id=54"/>--%>
             <c:if test="${!empty listAdverts}">
                 <p>Все товары в категории <strong>${category}</strong></p>
                 <%--cat: ${imagesDirectory} ****--%>
                 <c:forEach items="${listAdverts}" var="advert">
                     <div class="advertItem">
+                        ${imageNotFound}
                         <c:choose>
                             <c:when test="${advert.imagesCount > 0}">
-                                <%--<div><a href="/obyavleniye/${advert.id}">${advert.title}</a>--%>
-                                <%--</div>--%>
-                                            <%--<img src="/images/${advert.authorUsername}/${advert.title}/0.jpg">--%>
-                                            <%--<img src="/image/${advert.authorUsername}/${advert.title}/">--%>
-
-
-
-                                            <%--<img src="${imagesDirectory}/resources/uploadImages/${advert.authorUsername}/${advert.title}/0.jpg">--%>
-                                            <%--***--%>
-                                            <%--<img src="${pageContext.request.contextPath}/imageServlet?advertid=${advert.id}">--%>
-                                            <%--<img src="${pageContext.request.contextPath}/imageServlet?advertid=${row.id}">--%>
-                                            <%--132--%>
-                                            <%--<img src="${pageContext.request.contextPath}/images/foo.png">--%>
-                                            <%--<img src="data:image/jpg;base64,${advert.base64imageFile}" alt="image"/>--%>
-                                            <%--****--%>
-
-
-                                </c:when>
-                                <c:otherwise>
-                                    <img src="/resources/images/bg-about.jpg">
-                                </c:otherwise>
-                            </c:choose>
+                                <a href="/obyavleniye/${advert.id}"><img src="/imageDisplay?id=${advert.id}"/></a>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="/resources/images/image_not_found.png">
+                            </c:otherwise>
+                        </c:choose>
 
                             <div class="advertInfo">
                                 <a href="/obyavleniye/${advert.id}">

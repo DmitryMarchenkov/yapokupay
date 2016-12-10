@@ -121,8 +121,8 @@ $( document ).ready(function() {
             },
             success: function (response) {
                 debugger;
-                // var advert = $.parseJSON(response);
-                sendImages(user, title);
+                var advert = $.parseJSON(response);
+                sendImages(advert.id);
                 console.log("success");
                 console.log("response: " + response);
 
@@ -140,7 +140,7 @@ $( document ).ready(function() {
 
 
 
-function sendImages(user, title) {
+function sendImages(advertid) {
     debugger;
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
@@ -156,7 +156,7 @@ function sendImages(user, title) {
 
     console.log("123:" + formData.getAll("files"));
     $.ajax({
-        url : "/uploadImages/" + user + "/" + title,
+        url : "/uploadImages/" + advertid,
         type: "POST",
         dataType: 'text',
         data: formData,

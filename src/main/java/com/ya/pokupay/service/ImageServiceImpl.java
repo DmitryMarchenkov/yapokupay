@@ -2,16 +2,11 @@ package com.ya.pokupay.service;
 
 import com.ya.pokupay.dao.ImageDAO;
 import com.ya.pokupay.model.Image;
-import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class ImageServiceImpl implements ImageService {
@@ -37,66 +32,37 @@ public class ImageServiceImpl implements ImageService {
                     image.setName(filename);
                     image.setAdvertid(advertid);
                     image.setData(blob);
-                    imageList.add(image);
+//                    imageList.add(image);
+                    this.imageDAO.save(image);
                 } catch (Exception e) {
                     System.out.println("exception: " + e);
                 }
             }
         }
 
-        this.imageDAO.save(imageList);
+//        this.imageDAO.save(imageList);
     }
 
     @Override
     public List<Image> getImagesByAdvertId(Integer id) {
-//        if (count != null) {
-            List<Image> imageList = this.imageDAO.getImagesList(id);
-//        } else {
-//            List<Image> imageList = this.imageDAO.getOneImage(id);
-//        }
-
-
-
-
+        List<Image> imageList = this.imageDAO.getImagesList(id);
         if (imageList.isEmpty()) return null;
-
-//        try {
-            for (int i = 0; i < imageList.size(); i++) {
-//                Image image = imageList.get(i);
-                convertImageDataToBase64(imageList.get(i));
-
-//                Blob blob = image.getData();
-//                byte[] imageBytes = blob.getBytes(1, (int) blob.length());
-//                byte[] encodeBase64 = Base64.getEncoder().encode(imageBytes);
-//                String base64Encoded = new String(encodeBase64, "UTF-8");
-//                image.setBase64imageFile(base64Encoded);
-
-            }
-//        } catch (Exception e) {
-//            System.out.println("exception: " + e);
-//        }
         return imageList;
     }
 
     @Override
     public Image getOneImageByAdvertId(Integer id) {
-        Image image = this.imageDAO.getOneImage(id);
-        if (image != null) {
-            convertImageDataToBase64(image);
+        Image image = null;
+        try {
+            image = this.imageDAO.getOneImageByAdvertId(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return image;
     }
 
-    private Image convertImageDataToBase64(Image image) {
-        try {
-            Blob blob = image.getData();
-            byte[] imageBytes = blob.getBytes(1, (int) blob.length());
-            byte[] encodeBase64 = Base64.getEncoder().encode(imageBytes);
-            String base64Encoded = new String(encodeBase64, "UTF-8");
-            image.setBase64imageFile(base64Encoded);
-        } catch (Exception e) {
-            System.out.println("exception: " + e);
-        }
-        return image;
+    @Override
+    public Image getImageById(Integer id) {
+        return this.imageDAO.getImageById(id);
     }
 }

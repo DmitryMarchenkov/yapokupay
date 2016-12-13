@@ -4,6 +4,7 @@ import com.ya.pokupay.model.Image;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -16,10 +17,22 @@ public class ImageDAOImpl implements ImageDAO {
     }
 
     @Override
-    public void save(Image image) {
-        Session session = this.sessionFactory.openSession();
-        session.persist(image);
-        session.flush();
+    public String save(List<Image> images) {
+        if (images.size() == 0) return null;
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for ( int i = 0; i < images.size(); i++ ) {
+            session.save(images.get(i));
+            if ( i % 20 == 0 ) {
+                session.flush();
+                session.clear();
+            }
+        }
+        tx.commit();
+        session.close();
+        return "Files successfully uploaded";
     }
 
     @Override

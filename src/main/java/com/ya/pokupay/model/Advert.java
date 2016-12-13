@@ -1,19 +1,23 @@
 package com.ya.pokupay.model;
 
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name="advert")
+@Indexed
 public class Advert implements Serializable{
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-
     private int id;
 
+    @Column(name = "title")
+    @Field
     private String title;
 
     private String price;

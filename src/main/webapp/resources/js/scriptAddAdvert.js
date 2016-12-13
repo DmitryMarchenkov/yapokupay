@@ -121,10 +121,10 @@ $( document ).ready(function() {
             },
             success: function (response) {
                 debugger;
-                var advert = $.parseJSON(response);
-                sendImages(advert.id);
                 console.log("success");
                 console.log("response: " + response);
+                var advert = $.parseJSON(response);
+                sendImages(advert.id);
 
             },
             error: function (data) {
@@ -134,11 +134,7 @@ $( document ).ready(function() {
         });
 
     });
-
 });
-
-
-
 
 function sendImages(advertid) {
     debugger;
@@ -147,13 +143,15 @@ function sendImages(advertid) {
 
     var formData = new FormData();
     var files = $(".file")[0].files;
-    debugger;
+
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
 
     $.each(files, function (i, val) {
         console.log("ind: " + i + ", val = " + val);
         formData.append("files", val);
     });
-
     console.log("123:" + formData.getAll("files"));
     $.ajax({
         url : "/uploadImages/" + advertid,
@@ -162,10 +160,23 @@ function sendImages(advertid) {
         data: formData,
         processData: false,
         contentType: false,
-        // scriptCharset: "utf-8",
         cache: false,
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){
+                myXhr.upload.addEventListener('progress',progress, false);
+            }
+            return myXhr;
+        },
         beforeSend: function(xhr) {
             xhr.setRequestHeader(header, token);
+
+
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+
         },
         complete: function() {
             console.log("Sent");
@@ -173,12 +184,34 @@ function sendImages(advertid) {
         success: function (response) {
             console.log("success");
             console.log("response: " + response);
+            alert("Объявление успешно сохранено!");
+            window.location = "/";
         },
         error: function (data) {
             console.log("error");
             console.log(data);
         }
+    }).done(function (res) {
+        console.log("res: " + res);
     });
+}
 
 
+function progress(e){
+
+    if(e.lengthComputable){
+        var max = e.total;
+        var current = e.loaded;
+        var progress = $(".progress");
+
+        var Percentage = (current * 100)/max;
+        progress.attr("value", Percentage);
+        console.log(Percentage);
+
+
+        if(Percentage >= 100)
+        {
+            // process completed
+        }
+    }
 }

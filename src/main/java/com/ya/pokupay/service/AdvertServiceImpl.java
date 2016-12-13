@@ -84,6 +84,11 @@ public class AdvertServiceImpl implements AdvertService {
         return this.advertDAO.getAdvertById(id);
     }
 
+    @Override
+    public List<Advert> searchAdvert(String searchQuery) throws InterruptedException {
+        return this.advertDAO.searchAdvert(searchQuery);
+    }
+
     private static DateFormatSymbols myDateFormatSymbols = new DateFormatSymbols(){
 
         @Override

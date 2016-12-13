@@ -17,6 +17,8 @@
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${contextPath}/resources/js/script.js"></script>
 
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 
@@ -52,13 +54,14 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="/all">Все категории</a></li>
-                    <li><a href="/property">Недвижимость</a></li>
-                    <li><a href="/auto">Авто</a></li>
-                    <li><a href="/clothes">Одежда</a></li>
-                    <li><a href="/technic">Техника</a></li>
+                    <c:forEach items="${categories}" var="category">
+                        <li><a href="/${category.key}">${category.value}</a></li>
+                    </c:forEach>
                 </ul>
             </div>
+        </div>
+        <div id="searchLine">
+            <input type="text" placeholder="Что вы ищете?"/>
         </div>
     </div>
 

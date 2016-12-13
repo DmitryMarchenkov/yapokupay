@@ -35,12 +35,12 @@
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
                         <a href="/user/${pageContext.request.userPrincipal.name}" id="profile">${pageContext.request.userPrincipal.name}</a>
                         |
-                        <a href="<c:url value="/logout" />" id="logout">Log Out</a>
+                        <a href="<c:url value="/logout" />" id="logout">Выход</a>
                     </c:when>
                     <c:otherwise>
                         <a href="#" id="profile">Гость</a>
                         |
-                        <a href="<c:url value="/login" />" id="login">Log In</a>
+                        <a href="<c:url value="/login" />" id="login">Вход</a>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -64,30 +64,30 @@
 
                 <table>
                     <tr>
-                        <td>title</td>
+                        <td>Заголовок</td>
                         <td><input name="title" type="text"/></td>
                     </tr>
                     <tr>
-                        <td>price</td>
+                        <td>Цена</td>
                         <td><input name="price" type="text"/></td>
                     </tr>
                     <tr>
-                        <td>description</td>
-                        <td><input name="description" type="text"/></td>
+                        <td>Описание</td>
+                        <td><textarea class="form-control" rows="3" name="description" placeholder="Описание"></textarea></td>
+                        <%--<td><input name="description" type="text"/></td>--%>
                     </tr>
                     <tr>
-                        <td>category</td>
+                        <td>Категория</td>
                         <td>
                             <select class="form-control" id="categories">
-                                <option>Авто</option>
-                                <option>Техника</option>
-                                <option>Недвижимость</option>
-                                <option>Одежда</option>
+                                <c:forEach items="${categories}" var="category">
+                                    <option>${category.value}</option>
+                                </c:forEach>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>state</td>
+                        <td>Состояние</td>
                         <td>
                             <select class="form-control" id="state">
                                 <option>Новый</option>
@@ -101,22 +101,34 @@
 
 
 
-
-
                     <input hidden name="authorid" type="text" value="${pageContext.request.userPrincipal.name}"/>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" value="send"/>
+                            <input type="submit" value="Сохранить"/>
                         </td>
                     </tr>
                 </table>
             </form>
-
-
-
-
         </div>
     </div>
+
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="myfile"><br>
+        <input type="submit" value="Upload File to Server">
+    </form>
+
+    <progress class="progress" value="0" max="100">0%</progress>
+
+    <div class="progress">
+        <div class="bar"></div >
+        <div class="percent">0%</div >
+    </div>
+
+    <div id="status"></div>
+
+
+
 
     <footer>
         <p>

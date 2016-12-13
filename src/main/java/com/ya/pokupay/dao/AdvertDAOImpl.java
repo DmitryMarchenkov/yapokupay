@@ -6,6 +6,10 @@ import com.ya.pokupay.model.Advert;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -59,5 +63,28 @@ public class AdvertDAOImpl implements AdvertDAO {
             return advertsList.get(0);
         }
         return null;
+    }
+
+    @Override
+    public List<Advert> searchAdvert(String searchQuery) throws InterruptedException {
+        Session session = this.sessionFactory.openSession();
+
+        FullTextSession fullTextSession = Search.getFullTextSession(session);
+        fullTextSession.createIndexer().startAndWait();
+        Transaction tx = fullTextSession.beginTransaction();
+
+        QueryBuilder qb = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(Advert.class).get();
+        org.apache.lucene.search.Query query = qb
+                .keyword()
+                .onFields("title")
+                .matching(searchQuery)
+                .createQuery();
+
+        org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(query, Advert.class);
+
+        List result = hibQuery.list();
+        tx.commit();
+        session.close();
+        return result;
     }
 }

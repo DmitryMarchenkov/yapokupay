@@ -13,4 +13,6 @@ public interface AdvertDAO {
     void updateAdvert(Advert a);
 
     Advert getAdvertById(Integer id);
+
+    List<Advert> searchAdvert(String searchQuery) throws InterruptedException;
 }

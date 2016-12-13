@@ -1,6 +1,4 @@
 $( document ).ready(function() {
-    var currentURL = window.location.href;
-
     $(".dropdown-menu a").on("click", function () {
         var url = $(this).attr("href");
         if (url == '#') {
@@ -9,4 +7,13 @@ $( document ).ready(function() {
             history.pushState('', '', url);
         }
     })
+
+    $('#searchLine input').keyup(function(e){
+        if(e.keyCode == 13)
+        {
+            var searchQuery = this.value;
+            console.log(searchQuery);
+            location.href = '/search/' + searchQuery;
+        }
+    });
 });

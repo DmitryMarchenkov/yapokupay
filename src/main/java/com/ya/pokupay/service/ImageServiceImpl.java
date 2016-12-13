@@ -18,7 +18,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void save(List<MultipartFile> images, Integer advertid) {
+    public String save(List<MultipartFile> images, Integer advertid) {
         List<Image> imageList = new ArrayList<>();
         if (images.size() != 0) {
             for (int i = 0; i < images.size(); i++) {
@@ -32,15 +32,15 @@ public class ImageServiceImpl implements ImageService {
                     image.setName(filename);
                     image.setAdvertid(advertid);
                     image.setData(blob);
-//                    imageList.add(image);
-                    this.imageDAO.save(image);
+                    imageList.add(image);
+//                    this.imageDAO.save(image);
                 } catch (Exception e) {
                     System.out.println("exception: " + e);
                 }
             }
         }
 
-//        this.imageDAO.save(imageList);
+        return this.imageDAO.save(imageList);
     }
 
     @Override

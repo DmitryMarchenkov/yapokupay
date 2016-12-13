@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ImageService {
-    void save(List<MultipartFile> images, Integer advertid);
+    String save(List<MultipartFile> images, Integer advertid);
 
     List<Image> getImagesByAdvertId(Integer id);
 

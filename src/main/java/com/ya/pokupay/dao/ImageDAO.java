@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ImageDAO {
-    void save(Image image);
+    String save(List<Image> image);
 
     List<Image> getImagesList(Integer id);
 

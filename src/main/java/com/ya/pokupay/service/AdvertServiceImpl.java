@@ -3,10 +3,7 @@ package com.ya.pokupay.service;
 import java.io.File;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.model.Image;
@@ -34,8 +31,8 @@ public class AdvertServiceImpl implements AdvertService {
 
     @Override
     @Transactional
-    public List<Advert> listAdverts(String category) {
-        List<Advert> advertList = this.advertDAO.listAdverts(category);
+    public List<Advert> listAdverts(String category, String orderByCriteria) {
+        List<Advert> advertList = this.advertDAO.listAdverts(category, orderByCriteria);
 //        if (advertList.isEmpty()) return null;
 //
 //        for (int i = 0; i < advertList.size(); i++) {
@@ -85,8 +82,18 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     @Override
-    public List<Advert> searchAdvert(String searchQuery) throws InterruptedException {
-        return this.advertDAO.searchAdvert(searchQuery);
+    public List<Advert> searchAdvert(String searchQuery, String category) throws InterruptedException {
+        List<Advert> foundedAdvertList = this.advertDAO.searchAdvert(searchQuery);
+        if (category == null) return foundedAdvertList;
+        if (category.equals("Все категории")) return foundedAdvertList;
+
+        List<Advert> advertList = new ArrayList<>();
+        for (Advert advert : foundedAdvertList) {
+            if (advert.getCategory().equals(category)) {
+                advertList.add(advert);
+            }
+        }
+        return advertList;
     }
 
     private static DateFormatSymbols myDateFormatSymbols = new DateFormatSymbols(){

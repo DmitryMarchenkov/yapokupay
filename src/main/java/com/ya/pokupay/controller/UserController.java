@@ -84,8 +84,7 @@ public class UserController {
         modelEmail.put("to", userForm.getEmail());
         modelEmail.put("userName", userForm.getUsername());
         modelEmail.put("phone", userForm.getPhone());
-        modelEmail.put("firstName", userForm.getFirstName());
-        modelEmail.put("lastName", userForm.getLastName());
+        modelEmail.put("name", userForm.getName());
         modelEmail.put("token", token);
         boolean result = emailService.sendEmail("registered.vm", modelEmail);
         return "redirect:/all";

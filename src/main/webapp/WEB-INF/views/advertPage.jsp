@@ -83,6 +83,9 @@
                         </c:choose>
 
                 </div>
+            ${user.name}<br/>
+            ${user.phone}<br/>
+            ${user.email}<br/>
         </div>
     </div>
 

@@ -24,7 +24,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/all" >
+        <a href="/" >
             <img id="logo" src="${contextPath}/resources/images/logo.jpg">
         </a>
 
@@ -50,7 +50,7 @@
 
             <div class="dropdown">
                 <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
-                    ${category}
+                    <p>${category}</p>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -63,38 +63,16 @@
         <div id="searchLine">
             <input type="text" placeholder="Что вы ищете?"/>
         </div>
+        <div id="chooseSort">
+            <button class="btn" type="button">От дорогих к дешевым</button>
+            <button class="btn" type="button">От дешевых к дорогим</button>
+            <button class="btn" type="button">Самые новые</button>
+            <button class="btn" type="button">Самые старые</button>
+        </div>
     </div>
 
     <div id="content">
         <div class="page">
-            <%--<img src="/imageDisplay?id=54"/>--%>
-            <c:if test="${!empty listAdverts}">
-                <p>Все товары в категории <strong>${category}</strong></p>
-                <%--cat: ${imagesDirectory} ****--%>
-                <c:forEach items="${listAdverts}" var="advert">
-                    <div class="advertItem">
-                        ${imageNotFound}
-                        <c:choose>
-                            <c:when test="${advert.imagesCount > 0}">
-                                <a href="/obyavleniye/${advert.id}"><img src="/imageDisplay?id=${advert.id}"/></a>
-                            </c:when>
-                            <c:otherwise>
-                                <img src="/resources/images/image_not_found.png">
-                            </c:otherwise>
-                        </c:choose>
-
-                            <div class="advertInfo">
-                                <a href="/obyavleniye/${advert.id}">
-                                    <h2>${advert.title}</h2>
-                                </a>
-                                <p>${advert.date}</p>
-                            </div>
-                            <div class="advertPrice">
-                                <p>${advert.price} грн</p>
-                            </div>
-                        </div>
-                    </c:forEach>
-            </c:if>
         </div>
     </div>
 

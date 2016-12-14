@@ -60,19 +60,11 @@
     <div id="content">
         <form:form method="POST" modelAttribute="userForm" class="form-signin" >
             <h2 class="form-signin-heading">Create your account</h2>
-            <spring:bind path="firstName">
+            <spring:bind path="name">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="firstName" class="form-control" placeholder="Имя"
+                    <form:input type="text" path="name" class="form-control" placeholder="Имя"
                                 autofocus="true"></form:input>
-                    <form:errors path="firstName"></form:errors>
-                </div>
-            </spring:bind>
-
-            <spring:bind path="lastName">
-                <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="lastName" class="form-control" placeholder="Фамилия"
-                                autofocus="true"></form:input>
-                    <form:errors path="lastName"></form:errors>
+                    <form:errors path="name"></form:errors>
                 </div>
             </spring:bind>
 

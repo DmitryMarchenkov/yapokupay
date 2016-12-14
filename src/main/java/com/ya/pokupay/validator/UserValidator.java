@@ -23,16 +23,10 @@ public class UserValidator implements Validator{
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        /*Validate first name*/
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Required");
-        if (user.getFirstName().length() < 2 || user.getFirstName().length() > 32) {
-            errors.rejectValue("firstName", "Size.userForm.name");
-        }
-
-        /*Validate last name*/
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "Required");
-        if (user.getLastName().length() < 2 || user.getLastName().length() > 32) {
-            errors.rejectValue("lastName", "Size.userForm.name");
+        /*Validate name*/
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Required");
+        if (user.getName().length() < 2 || user.getName().length() > 32) {
+            errors.rejectValue("Name", "Size.userForm.name");
         }
 
         /*Validate phone*/

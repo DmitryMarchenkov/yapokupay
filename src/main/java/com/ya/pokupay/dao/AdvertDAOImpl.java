@@ -3,10 +3,7 @@ package com.ya.pokupay.dao;
 import java.util.List;
 
 import com.ya.pokupay.model.Advert;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
@@ -23,16 +20,53 @@ public class AdvertDAOImpl implements AdvertDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Advert> listAdverts(String category) {
+    public List<Advert> listAdverts(String category, String orderByCriteria) {
         Query query;
         Session session = this.sessionFactory.getCurrentSession();
-        if (category != null) {
-            query = session.createQuery("from Advert where category = :category");
+        if (!category.equals("Все категории")) {
+            switch (orderByCriteria) {
+                case "От дешевых к дорогим":
+                    query = session.createQuery("from Advert a where category = :category order by a.price ASC");
+                    break;
+                case "От дорогих к дешевым":
+                    query = session.createQuery("from Advert a where category = :category order by a.price DESC");
+                    break;
+                case "Самые новые":
+                    query = session.createQuery("from Advert a where category = :category order by a.date DESC");
+                    break;
+                case "Самые старые":
+                    query = session.createQuery("from Advert a where category = :category order by a.date ASC");
+                    break;
+                default:
+                    query = session.createQuery("from Advert a where category = :category order by a.date DESC");
+                    break;
+            }
             query.setParameter("category", category);
+
         } else {
-            query = session.createQuery("from Advert");
+            switch (orderByCriteria) {
+                case "От дешевых к дорогим":
+                    query = session.createQuery("from Advert a order by a.price ASC");
+                    break;
+                case "От дорогих к дешевым":
+                    query = session.createQuery("from Advert a order by a.price DESC");
+                    break;
+                case "Самые новые":
+                    query = session.createQuery("from Advert a order by a.date DESC");
+                    break;
+                case "Самые старые":
+                    query = session.createQuery("from Advert a order by a.date ASC");
+                    break;
+                default:
+                    query = session.createQuery("from Advert a order by a.date DESC");
+                    break;
+            }
+//            query = session.createQuery("from Advert");
+//            query = session.createQuery("from Advert a order by :orderByCriteria");
+//            query.setParameter("orderByCriteria", orderByCriteria);
         }
         List<Advert> advertsList = query.list();
+//        List<Advert> advertsList = criteria.list();
         return advertsList;
     }
 

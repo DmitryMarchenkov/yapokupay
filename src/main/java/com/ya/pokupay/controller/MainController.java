@@ -45,19 +45,19 @@ public class MainController {
     @Autowired
     private ImageService imageService;
 
-    @RequestMapping(value =  {"/", "/all"}, method = RequestMethod.GET)
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value =  "/", method = RequestMethod.GET)
     public String index(Model model) {
         String category = "Все категории";
         model.addAttribute("category", category);
         model.addAttribute("categories", categories);
-        model.addAttribute("listAdverts", this.advertService.listAdverts(null));
         return "index";
     }
 
-    @RequestMapping(value =  "/{category}", method = RequestMethod.GET)
-    public String autoPage(@PathVariable("category") String category, Model model) throws IOException {
-
-
+    @RequestMapping(value = "/{category}", method = RequestMethod.GET)
+    public String categoryPage(@PathVariable("category") String category, Model model) {
         String queryCategory = categories.get(category);
         if (queryCategory == null) {
             queryCategory = "Все категории";
@@ -65,8 +65,14 @@ public class MainController {
 
         model.addAttribute("category", queryCategory);
         model.addAttribute("categories", categories);
-        model.addAttribute("listAdverts", this.advertService.listAdverts(queryCategory));
         return "index";
+    }
+
+    @ResponseBody
+    @RequestMapping(value =  "/getAdverts/{category}/{orderByCriteria}", method = RequestMethod.GET)
+    public List<Advert> getAdverts(@PathVariable("category") String category, @PathVariable("orderByCriteria") String orderByCriteria) throws IOException {
+        List<Advert> advertList = this.advertService.listAdverts(category, orderByCriteria);
+        return advertList;
     }
 
     @RequestMapping(value = "/obyavleniye/{advertid}", method = RequestMethod.GET)
@@ -85,6 +91,7 @@ public class MainController {
         } else {
             model.addAttribute("imageNotFound", true);
         }
+        model.addAttribute("user", userService.findByUsername(advert.getAuthorUsername()));
         return "advertPage";
     }
 
@@ -148,13 +155,11 @@ public class MainController {
         return "admin";
     }
 
-    @RequestMapping(value="/search/{searchQuery}", method = RequestMethod.GET)
-    public String searchResult (@PathVariable("searchQuery") String searchQuery, Model model) throws InterruptedException {
-        String category = "Все категории";
-        model.addAttribute("category", category);
-        model.addAttribute("categories", categories);
-        model.addAttribute("listAdverts", this.advertService.searchAdvert(searchQuery));
-        return "index";
+    @ResponseBody
+    @RequestMapping(value="/search/{searchQuery}/{category}", method = RequestMethod.GET)
+    public List<Advert> searchResult (@PathVariable("searchQuery") String searchQuery, @PathVariable("category") String category) throws InterruptedException {
+        List<Advert> advertList = this.advertService.searchAdvert(searchQuery, category);
+        return advertList;
     }
 
 }

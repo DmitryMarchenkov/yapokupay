@@ -32,6 +32,7 @@
 
                     <c:if test="${!empty user}">
                         <h2>Пользователь <strong>${user.username}</strong></h2>
+                        <h2>Пользователь <strong>${user.name}</strong></h2>
                         <p>${user.password}</p>
                     </c:if>
 

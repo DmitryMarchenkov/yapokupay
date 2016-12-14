@@ -56,8 +56,7 @@ a {
 }
 
 #header {
-    /*height: 170px;*/
-    padding: 10px;
+    padding: 10px 10px 0px;
 }
 
 #logo {
@@ -94,8 +93,9 @@ a {
     background: #dcf5e4;
 }
 
-#content {
-    margin-top: 10px;
+.dropdown-toggle p {
+    margin: 0px;
+    display: inline;
 }
 
 .advertItem {
@@ -159,6 +159,16 @@ footer p {
 #searchLine input {
     width: 100%;
     padding: 6px;
+}
+
+#chooseSort {
+    text-align: right;
+    margin-top: 10px;
+}
+
+#chooseSort button {
+    font-size: 12px;
+    background: #d1ffcd;
 }
 
 

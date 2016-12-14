@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <td>Цена</td>
-                        <td><input name="price" type="text"/></td>
+                        <td><input name="price" type="text"/> грн</td>
                     </tr>
                     <tr>
                         <td>Описание</td>

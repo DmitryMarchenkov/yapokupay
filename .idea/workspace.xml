@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="691c55de-699b-4086-ac43-35bc8fa1ae04" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/35ae7b5b-8c34-4e40-9e49-93a40c1c82c3.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/35ae7b5b-8c34-4e40-9e49-93a40c1c82c3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c59951b2-6490-4488-bf0f-620e142337ce.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c59951b2-6490-4488-bf0f-620e142337ce.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/dao/AdvertDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/dao/AdvertDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/dao/AdvertDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/dao/AdvertDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/AdvertService.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/AdvertService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/AdvertServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/AdvertServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/validator/UserValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/ya/pokupay/validator/UserValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addAdvert.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addAdvert.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/advertPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/advertPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/script.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
     </list>
     <ignored path="OnlineShop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertDAOImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdvertDAOImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ya/pokupay/dao/AdvertDAOImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
@@ -131,6 +112,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -234,7 +225,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/ImageService.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/35ae7b5b-8c34-4e40-9e49-93a40c1c82c3/console.sql" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/scriptAddAdvert.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/LoggingController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ya/pokupay/model/Advert.java" />
@@ -257,6 +247,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ya/pokupay/service/AdvertServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ya/pokupay/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/script.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
       </list>
     </option>
   </component>
@@ -1425,12 +1416,12 @@
       <workItem from="1481370692341" duration="19421000" />
       <workItem from="1481561531561" duration="15482000" />
       <workItem from="1481618342347" duration="21863000" />
-      <workItem from="1481725335349" duration="16245000" />
+      <workItem from="1481725335349" duration="16504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="551676000" />
+    <option name="totallyTimeSpent" value="551935000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1750,14 +1741,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/searchResult.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1364">
@@ -1957,6 +1940,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

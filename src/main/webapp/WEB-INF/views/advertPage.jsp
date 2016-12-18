@@ -14,11 +14,6 @@
     <link href="${contextPath}/resources/css/styleShowAdvert.css" rel="stylesheet"/>
     <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 
-    <script src="${contextPath}/resources/js/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${contextPath}/resources/js/script.js"></script>
-    <script src="${contextPath}/resources/js/scriptShowAdvert.js"></script>
-
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
@@ -58,34 +53,76 @@
     </div>
 
     <div id="content">
-        <div class="page">
-            <input type="hidden" name="advertId" value="${advert.id}">
-            ${advert.id}<br/>
-            ${advert.title}<br/>
-            ${advert.price}<br/>
-            ${advert.description}<br/>
-            ${imageNotFound}
-            Просмотров: ${advert.viewCounter}
-                <div class="slider">
-                        <c:choose>
-                            <c:when test="${imageNotFound}">
-                                <img src="/resources/images/image_not_found.png">
-                            </c:when>
-                            <c:otherwise>
-                                <ul>
-                                    <c:forEach items="${imagesIds}" var="imageId" varStatus="loop">
-                                        <li>
-                                            <img src="/imagesDisplay?id=${imageId}" alt=""/>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </c:otherwise>
-                        </c:choose>
+        <div class="page row">
+            <div id="advert_desc" class="col-md-8 col-xs-12">
+                <input type="hidden" name="advertId" value="${advert.id}">
+                <h2><strong>${advert.title}</strong></h2>
+                <div id="showed">
+                    <p>
+                        Добавлено: ${advert.date}
+                    </p>
 
+                    <p >
+                        Просмотров: ${advert.viewCounter}
+                    </p>
                 </div>
-            ${user.name}<br/>
-            ${user.phone}<br/>
-            ${user.email}<br/>
+                <div class="slider">
+                    <c:choose>
+                        <c:when test="${imageNotFound}">
+                            <img src="/resources/images/image_not_found.png">
+                        </c:when>
+                        <c:otherwise>
+                            <ul>
+                                <c:forEach items="${imagesIds}" var="imageId" varStatus="loop">
+                                    <li>
+                                        <img src="/imagesDisplay?id=${imageId}" alt=""/>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <p>
+                    ${advert.description}<br/>
+                </p>
+            </div>
+
+            <div id="user_info" class="col-md-4 col-xs-12">
+                <div id="price"><strong>${advert.price} грн</strong></div>
+                <p>Автор: ${user.name}</p>
+                <c:if test="${user.phone != null}">
+                    <p>Телефон: ${user.phone}</p>
+                </c:if>
+                <button type="button" class="btn btn-success btn-lg send_message_to_author">
+                    Написать автору
+                    <input type="hidden" value="${user.id}">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="shadowBackground">
+        <div id="messageToAuthor">
+            <form class="form-horizontal" id="messageForm">
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Ваш email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="hidden" id="authName" value="${user.username}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="col-sm-2 control-label">Сообщение</label>
+                    <div class="col-sm-10">
+                        <textarea rows="10" class="form-control" id="message" placeholder="Введите текст сообщения!"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 sendButton">
+                            <button type="submit" class="btn btn-default">Отправить</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -95,6 +132,10 @@
         </p>
     </footer>
 </div>
+
+<script src="${contextPath}/resources/js/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/scriptShowAdvert.js"></script>
+<script src="${contextPath}/resources/js/sendMessage.js"></script>
 
 </body>
 </html>

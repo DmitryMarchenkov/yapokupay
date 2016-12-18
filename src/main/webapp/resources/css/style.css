@@ -53,6 +53,7 @@ a {
 #wrapper {
     width: 70%;
     margin: 0 auto;
+    min-height: 800px;
 }
 
 #header {

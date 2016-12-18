@@ -1,0 +1,10 @@
+<body bgcolor="#FFFFFF" leftmargin="40" topmargin="0" marginwidth="0" marginheight="0">
+<div>
+
+    <i>Вам отправлено приватное сообщение от пользователя Ya Pokupay</i> </br></br>
+    Email отправителя: $from </br>
+    <p></p>
+    Сообщение:
+    <p>$message</p>
+</div>
+</body>

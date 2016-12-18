@@ -118,4 +118,16 @@ public class UserController {
         }
         return new String(text);
     }
+
+    @ResponseBody
+    @RequestMapping(value="/messageToAuthor", method = RequestMethod.POST)
+    public String messageToAuthor (@RequestParam String email, @RequestParam String message, @RequestParam String authName) {
+        Map<String, Object> modelEmail = new HashMap<>();
+        modelEmail.put("from", email);
+        modelEmail.put("subject", "Новое приватное сообщение от пользователя на Ya Pokupay!");
+        modelEmail.put("to", userService.findByUsername(authName).getEmail());
+        modelEmail.put("message", message);
+        boolean result = emailService.sendEmail("privateMessage.vm", modelEmail);
+        return "Message sent";
+    }
 }

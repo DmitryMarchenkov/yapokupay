@@ -61,7 +61,7 @@ function getAdverts(sortBy) {
             }
         },
         error : function(response) {
-            alert('error');
+            console.log('error get adverts');
         }
     });
 }

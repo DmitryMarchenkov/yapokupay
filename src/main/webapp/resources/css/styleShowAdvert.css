@@ -1,9 +1,13 @@
+h2 {
+    /*font-family: "Monotype Corsiva"*/
+}
+
 .slider {
     z-index: 9;
-    width: 700px;
+    width: 600px;
     height: 290px;
     overflow: hidden;
-    margin: 0 0 7px;
+    margin: 10px 0;
     position: relative;
     text-align: center;
     border: 2px solid #6fd84d;
@@ -24,7 +28,7 @@
 .slider ul li {
     list-style-type: none;
     float: left;
-    width: 700px;
+    width: 600px;
     height: 290px;
 }
 .slider .nav {
@@ -47,4 +51,77 @@
 }
 .slider .nav span.on {
     background: #2e9419;
+}
+
+#showed p{
+    display: inline-block;
+}
+
+#showed p:last-child{
+    right: 0px;
+    position: absolute;
+}
+
+#advert_desc p:last-child {
+    font-size: 18px;
+    /*font-family: "Webdings";*/
+}
+
+#user_info {
+    text-align: center;
+    padding: 2px 20px;
+}
+
+#user_info p{
+    text-align: left;
+    font-family: "Courier New";
+    font-size: 20px;
+}
+
+#price {
+    margin: 50px;
+    font-size: 26px;
+}
+
+.send_message_to_author {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#shadowBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #a9ccb066;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    display: none;
+}
+
+#messageToAuthor {
+    width: 600px;
+    margin: 40px auto;
+    background: #25edaacc;
+    padding: 10px;
+}
+
+#messageToAuthor textarea{
+    max-width: 100%;
+    min-width: 100%;
+}
+
+#message {
+    min-height: 100px;
+}
+
+.sendButton {
+    float: right !important;
+    width: 30% !important;
+}
+
+.sendButton button{
+    width: 100%;
+    font-size: 20px;
+    padding: 2px;
 }

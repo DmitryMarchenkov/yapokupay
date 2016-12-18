@@ -161,5 +161,4 @@ public class MainController {
         List<Advert> advertList = this.advertService.searchAdvert(searchQuery, category);
         return advertList;
     }
-
 }

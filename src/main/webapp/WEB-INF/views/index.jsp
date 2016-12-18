@@ -13,10 +13,6 @@
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 
-    <script src="${contextPath}/resources/js/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${contextPath}/resources/js/script.js"></script>
-
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
@@ -82,6 +78,10 @@
         </p>
     </footer>
 </div>
+
+<script src="${contextPath}/resources/js/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${contextPath}/resources/js/script.js"></script>
 
 </body>
 </html>

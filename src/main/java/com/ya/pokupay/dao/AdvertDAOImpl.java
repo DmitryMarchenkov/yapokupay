@@ -61,12 +61,8 @@ public class AdvertDAOImpl implements AdvertDAO {
                     query = session.createQuery("from Advert a order by a.date DESC");
                     break;
             }
-//            query = session.createQuery("from Advert");
-//            query = session.createQuery("from Advert a order by :orderByCriteria");
-//            query.setParameter("orderByCriteria", orderByCriteria);
         }
         List<Advert> advertsList = query.list();
-//        List<Advert> advertsList = criteria.list();
         return advertsList;
     }
 

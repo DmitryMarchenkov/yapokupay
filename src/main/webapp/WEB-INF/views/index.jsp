@@ -20,12 +20,12 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/" >
+        <a href="/" class="logo">
             <img id="logo" src="${contextPath}/resources/images/logo.jpg">
         </a>
 
         <div id="header_right">
-            <a href="/addAdvert">
+            <a href="/addAdvert" id="addAdvertButton">
                 <button type="button" class="btn btn-default">Добавить объявление</button>
             </a>
 

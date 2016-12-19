@@ -13,10 +13,6 @@
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/scriptAddAdvert.js"></script>
-
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
@@ -25,7 +21,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/all" >
+        <a href="/all" class="logo">
             <img id="logo" src="../../resources/images/logo.jpg">
         </a>
 
@@ -58,26 +54,20 @@
 
     <div id="content">
         <div class="page">
-           <h2>Добавить объявление</h2>
+           <p id="addAdvert">Добавить объявление</p>
 
             <form id="advertForm"  commandName="advert" acceptCharset="UTF-8">
-
-                <table>
+                <table class="table">
                     <tr>
-                        <td>Заголовок</td>
+                        <td><strong>Заголовок: </strong></td>
                         <td><input name="title" type="text"/></td>
                     </tr>
                     <tr>
-                        <td>Цена</td>
+                        <td><strong>Цена: </strong></td>
                         <td><input name="price" type="text"/> грн</td>
                     </tr>
                     <tr>
-                        <td>Описание</td>
-                        <td><textarea class="form-control" rows="3" name="description" placeholder="Описание"></textarea></td>
-                        <%--<td><input name="description" type="text"/></td>--%>
-                    </tr>
-                    <tr>
-                        <td>Категория</td>
+                        <td><strong>Категория: </strong></td>
                         <td>
                             <select class="form-control" id="categories">
                                 <c:forEach items="${categories}" var="category">
@@ -87,7 +77,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Состояние</td>
+                        <td><strong>Состояние: </strong></td>
                         <td>
                             <select class="form-control" id="state">
                                 <option>Новый</option>
@@ -95,40 +85,21 @@
                             </select>
                         </td>
                     </tr>
-
-                    <input type="file" class="file" name="file" multiple>
-
-
-
-
-                    <input hidden name="authorid" type="text" value="${pageContext.request.userPrincipal.name}"/>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" value="Сохранить"/>
-                        </td>
-                    </tr>
                 </table>
+                <strong>Описание: </strong>
+                <textarea class="form-control" rows="3" name="description" placeholder="Описание"></textarea>
+
+                <strong>Добавить изображения: </strong>
+                    <input type="file" class="file" name="file" multiple>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+                <input hidden name="authorid" type="text" value="${pageContext.request.userPrincipal.name}"/>
             </form>
         </div>
     </div>
 
-
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="myfile"><br>
-        <input type="submit" value="Upload File to Server">
-    </form>
-
-    <progress class="progress" value="0" max="100">0%</progress>
-
-    <div class="progress">
-        <div class="bar"></div >
-        <div class="percent">0%</div >
-    </div>
+    <progress class="progress progress-striped progress-success" value="0" max="100">0%</progress>
 
     <div id="status"></div>
-
-
-
 
     <footer>
         <p>
@@ -136,6 +107,10 @@
         </p>
     </footer>
 </div>
+
+<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scriptAddAdvert.js"></script>
 
 </body>
 </html>

@@ -144,9 +144,9 @@ function sendImages(advertid) {
     var formData = new FormData();
     var files = $(".file")[0].files;
 
-    var bar = $('.bar');
-    var percent = $('.percent');
-    var status = $('#status');
+    // var bar = $('.bar');
+    // var percent = $('.percent');
+    // var status = $('#status');
 
     $.each(files, function (i, val) {
         console.log("ind: " + i + ", val = " + val);
@@ -170,12 +170,10 @@ function sendImages(advertid) {
         },
         beforeSend: function(xhr) {
             xhr.setRequestHeader(header, token);
-
-
-            status.empty();
-            var percentVal = '0%';
-            bar.width(percentVal);
-            percent.html(percentVal);
+            // status.empty();
+            // var percentVal = '0%';
+            // bar.width(percentVal);
+            // percent.html(percentVal);
 
         },
         complete: function() {

@@ -106,9 +106,9 @@ function showAdverts(data, ifSearch) {
             var advertImage;
 
             if (advert.imagesCount > 0) {
-                advertImage = "<a href='/obyavleniye/" + advert.id + "'><img src='/imageDisplay?id=" + advert.id + "'/></a>";
+                advertImage = "<div class='advertImage'><a href='/obyavleniye/" + advert.id + "'><img src='/imageDisplay?id=" + advert.id + "'/></a></div>";
             } else {
-                advertImage = "<img src='/resources/images/image_not_found.png'>";
+                advertImage = "<div class='advertImage'><a href='/obyavleniye/" + advert.id + "'><img src='/resources/images/image_not_found.png'></a></div>";
             }
 
             page.append("<div class='advertItem'>" + advertImage +

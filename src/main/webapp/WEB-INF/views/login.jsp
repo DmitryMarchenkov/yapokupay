@@ -27,7 +27,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/all" >
+        <a class="logo" href="/all" >
             <img id="logo" src="../../resources/images/logo.jpg">
         </a>
 
@@ -60,7 +60,7 @@
     <div id="content">
         <form method="POST" action="${contextPath}/login" class="form-signin">
             <h2 class="form-heading">Вход</h2>
-            <div class="form-group ${error != null ? 'has-error' : ''}">
+            <div class="form-group loginForm ${error != null ? 'has-error' : ''}">
                 <span>${message}</span>
                 <input name="username" type="text" class="form-control" placeholder="Имя пользователя"
                        autofocus="true"/>

@@ -21,7 +21,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/all" class="logo">
+        <a class="logo" href="/all">
             <img id="logo" src="../../resources/images/logo.jpg">
         </a>
 

@@ -22,7 +22,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/all" >
+        <a class="logo" href="/all" >
             <img id="logo" src="${contextPath}/resources/images/logo.jpg">
         </a>
 

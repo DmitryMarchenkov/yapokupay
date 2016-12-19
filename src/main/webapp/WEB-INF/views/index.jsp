@@ -20,7 +20,7 @@
 
 <div id="wrapper">
     <div id="header">
-        <a href="/" class="logo">
+        <a class="logo" href="/">
             <img id="logo" src="${contextPath}/resources/images/logo.jpg">
         </a>
 

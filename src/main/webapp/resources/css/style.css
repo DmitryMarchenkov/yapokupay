@@ -134,8 +134,13 @@ form .table {
     margin-bottom: 50px;
 }
 
-.dropdown-menu {
+.open .dropdown-menu {
     font-size: 18px;
+}
+
+.open .dropdown-menu {
+    right: 0px;
+    left: auto;
 }
 
 .dropdown-menu li:hover {

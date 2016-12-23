@@ -87,7 +87,7 @@
                     </tr>
                 </table>
                 <strong>Описание: </strong>
-                <textarea class="form-control" rows="3" name="description" placeholder="Описание"></textarea>
+                <textarea id="description" class="form-control" rows="3" name="description" placeholder="Описание"></textarea>
 
                 <strong>Добавить изображения: </strong>
                     <input type="file" class="file" name="file" multiple>

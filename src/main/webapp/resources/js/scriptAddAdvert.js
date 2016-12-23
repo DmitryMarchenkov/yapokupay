@@ -8,75 +8,6 @@ $( document ).ready(function() {
         }
     });
 
-
-    //
-    //
-    //     maxFileSize = 1000000; // максимальный размер фалйа - 1 мб.
-    //
-    //
-    // // Обрабатываем событие Drop
-    // dropZone[0].ondrop = function(event) {
-    //     event.preventDefault();
-    //     dropZone.removeClass('hover');
-    //     dropZone.addClass('drop');
-    //
-    //     var file = event.dataTransfer.files[0];
-    //
-    //     // Проверяем размер файла
-    //     if (file.size > maxFileSize) {
-    //         dropZone.text('Файл слишком большой!');
-    //         dropZone.addClass('error');
-    //         return false;
-    //     }
-    //
-    //     // Создаем запрос
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.upload.addEventListener('progress', uploadProgress, false);
-    //     xhr.onreadystatechange = stateChange;
-    //     xhr.open('POST', '/upload.php');
-    //     xhr.setRequestHeader('X-FILE-NAME', file.name);
-    //     xhr.send(file);
-    // };
-    //
-    // // Показываем процент загрузки
-    // function uploadProgress(event) {
-    //     var percent = parseInt(event.loaded / event.total * 100);
-    //     dropZone.text('Загрузка: ' + percent + '%');
-    // }
-    //
-    // // Пост обрабочик
-    // function stateChange(event) {
-    //     if (event.target.readyState == 4) {
-    //         if (event.target.status == 200) {
-    //             dropZone.text('Загрузка успешно завершена!');
-    //         } else {
-    //             dropZone.text('Произошла ошибка!');
-    //             dropZone.addClass('error');
-    //         }
-    //     }
-    // }
-    //
-
-
-
-    // var imagesFiles;
-    // var imagesFilesTmp;
-    // $("#uploadImages").on("change", function (event) {
-    //     debugger;
-    //     imagesFiles = event.target.files;
-    //
-    //     $(imagesFiles).each(function () {
-    //         imagesFilesTmp = imagesFiles;
-    //     })
-    // })
-
-
-    // $("#uploadImages").on("change",function(event) {
-    //     debugger;
-    //     files = event.target.files;
-    // });
-
-
     $("#advertForm").submit(function(e) {
 
         e.preventDefault();
@@ -96,7 +27,7 @@ $( document ).ready(function() {
         var obyavleniye = {
             title: title,
             price: $("input[name = 'price']").val(),
-            description: $("input[name = 'description']").val(),
+            description: $("#description").val(),
             authorid: $("input[name = 'authorid']").val(),
             category: category,
             state: choosedState,
@@ -209,7 +140,7 @@ function progress(e){
 
         if(Percentage >= 100)
         {
-            // process completed
+            // process completed SUCCESS SAVED
         }
     }
 }

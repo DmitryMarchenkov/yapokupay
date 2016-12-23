@@ -1,6 +1,8 @@
 package com.ya.pokupay.model;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.sql.Blob;
 
@@ -17,10 +19,17 @@ public class Image {
 
     private int advertid;
 
-    private Blob data;
-
     @Transient
     private String base64imageFile;
+
+    @Transient
+    private String user;
+
+    @Transient
+    private String title;
+
+    @Transient
+    private MultipartFile file;
 
     public int getId() {
         return id;
@@ -46,19 +55,35 @@ public class Image {
         this.advertid = advertid;
     }
 
-    public Blob getData() {
-        return data;
-    }
-
-    public void setData(Blob data) {
-        this.data = data;
-    }
-
     public String getBase64imageFile() {
         return base64imageFile;
     }
 
     public void setBase64imageFile(String base64imageFile) {
         this.base64imageFile = base64imageFile;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }

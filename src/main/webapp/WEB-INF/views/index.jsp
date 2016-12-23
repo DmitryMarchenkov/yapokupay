@@ -22,6 +22,7 @@
     <div id="header">
         <a class="logo" href="/">
             <img id="logo" src="${contextPath}/resources/images/logo.jpg">
+            <%--<img id="logo" src="/imageDisplay?id=9">--%>
         </a>
 
         <div id="header_right">

@@ -73,9 +73,9 @@
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                <c:forEach items="${imagesIds}" var="imageId" varStatus="loop">
+                                <c:forEach items="${imagesNames}" var="imageName">
                                     <li>
-                                        <img src="/imagesDisplay?id=${imageId}" alt=""/>
+                                        <img src="/imageDisplay?advertId=${advert.id}&user=${advert.authorUsername}&fileName=${imageName}" alt=""/>
                                     </li>
                                 </c:forEach>
                             </ul>

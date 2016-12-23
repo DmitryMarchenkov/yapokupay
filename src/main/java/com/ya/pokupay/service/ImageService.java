@@ -11,7 +11,7 @@ public interface ImageService {
 
     List<Image> getImagesByAdvertId(Integer id);
 
-    Image getOneImageByAdvertId(Integer id) throws SQLException;
+    String getOneImageByAdvertId(Integer id) throws SQLException;
 
     Image getImageById(Integer id);
 }

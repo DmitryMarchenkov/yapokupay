@@ -1,7 +1,9 @@
 package com.ya.pokupay.service;
 
 import com.ya.pokupay.dao.ImageDAO;
+import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.model.Image;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Blob;
@@ -12,6 +14,12 @@ import java.util.List;
 public class ImageServiceImpl implements ImageService {
 
     private ImageDAO imageDAO;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private AdvertService advertService;
 
     public void setImageDAO(ImageDAO imageDAO) {
         this.imageDAO = imageDAO;
@@ -25,13 +33,17 @@ public class ImageServiceImpl implements ImageService {
                 try {
                     MultipartFile multiFile = images.get(i);
                     String filename = multiFile.getOriginalFilename();
-                    byte[] bytes = multiFile.getBytes();
-                    Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+//                    byte[] bytes = multiFile.getBytes();
+//                    Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
                     Image image = new Image();
                     image.setName(filename);
                     image.setAdvertid(advertid);
-                    image.setData(blob);
+                    Advert advert = advertService.getAdvertById(advertid);
+                    image.setTitle(advert.getTitle());
+                    image.setUser(advert.getAuthorUsername());
+                    image.setFile(multiFile);
+//                    image.setData(blob);
                     imageList.add(image);
 //                    this.imageDAO.save(image);
                 } catch (Exception e) {
@@ -51,8 +63,8 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Image getOneImageByAdvertId(Integer id) {
-        Image image = null;
+    public String getOneImageByAdvertId(Integer id) {
+        String image = null;
         try {
             image = this.imageDAO.getOneImageByAdvertId(id);
         } catch (SQLException e) {

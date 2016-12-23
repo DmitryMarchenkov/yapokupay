@@ -25,6 +25,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="generalProperties"
+		  class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath*:general.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
 	<!--<beans:bean id="multipartResolver"-->
 				<!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>-->
     <beans:bean id="multipartResolver"

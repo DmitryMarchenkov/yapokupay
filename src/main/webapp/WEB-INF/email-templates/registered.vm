@@ -43,10 +43,7 @@
                         <td>Телефон:</td><td>$phone</td>
                     </tr>
                     <tr>
-                        <td>Имя:</td><td>$firstName</td>
-                    </tr>
-                    <tr>
-                        <td>Фамилия:</td><td>$lastName</td>
+                        <td>Имя:</td><td>$name</td>
                     </tr>
                     <tr>
                         <td style="width: 100%;"></td>
@@ -55,7 +52,8 @@
                     <tr>
                         <td colspan="2" style="width: 100%;">
                             Для подтверждения регистрации перейдите по ссылке
-                            <a href="http://localhost:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
+##                            <a href="http://localhost:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
+                            <a href="http://148.251.35.142:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
                         </td>
                     </tr>
                     </tbody>

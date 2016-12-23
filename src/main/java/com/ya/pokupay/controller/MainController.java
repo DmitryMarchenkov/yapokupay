@@ -6,15 +6,17 @@ import com.ya.pokupay.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
@@ -38,6 +40,9 @@ public class MainController {
         categories.put("childsWorld", "Детский мир");
         categories.put("technics", "Техника");
     }
+
+    @Resource(name="generalProperties")
+    private Properties generalProperties;
 
     @Autowired
     private AdvertService advertService;
@@ -83,11 +88,11 @@ public class MainController {
         List<Image> images = imageService.getImagesByAdvertId(advertid);
 
         if (images != null) {
-            List<Integer> imagesIds = new ArrayList<>();
+            List<String> imagesNames = new ArrayList<>();
             for (int i = 0; i < images.size(); i++) {
-                imagesIds.add(images.get(i).getId());
+                imagesNames.add(images.get(i).getName());
             }
-            model.addAttribute("imagesIds", imagesIds);
+            model.addAttribute("imagesNames", imagesNames);
         } else {
             model.addAttribute("imageNotFound", true);
         }
@@ -96,28 +101,24 @@ public class MainController {
     }
 
     @RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
-    public void showImage(@RequestParam("id") Integer advertid, HttpServletResponse response, Model model)
+    public void showImage(HttpServletResponse response, HttpServletRequest request, Model model,
+                          @RequestParam("advertId") Integer advertId,
+                          @RequestParam("user") String user,
+                          @RequestParam("fileName") String fileName)
             throws ServletException, IOException, SQLException {
-        Image image = imageService.getOneImageByAdvertId(advertid);
-        if (image != null) {
-            model.addAttribute("imageNotFound", false);
-            Blob blob = image.getData();
-            response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-            response.getOutputStream().write(blob.getBytes(1, (int) blob.length()));
-            response.getOutputStream().close();
+        String imagesUrl = generalProperties.getProperty("imagesUrl");
+        if (!fileName.equals("")) {
+            File file = new File(imagesUrl + user + "/" + advertService.getAdvertById(advertId).getTitle() + "/" + fileName);
+            InputStream inputStream = null;
+            inputStream = new FileInputStream(file);
+            FileCopyUtils.copy(inputStream, response.getOutputStream());
+        } else {
+            File file = new File(imagesUrl + user + "/" + advertService.getAdvertById(advertId).getTitle() + "/" + imageService.getOneImageByAdvertId(advertId));
+            InputStream inputStream = null;
+            inputStream = new FileInputStream(file);
+            FileCopyUtils.copy(inputStream, response.getOutputStream());
         }
     }
-
-    @RequestMapping(value = "/imagesDisplay", method = RequestMethod.GET)
-    public void showImages(@RequestParam("id") Integer imageId, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-        Image image = imageService.getImageById(imageId);
-        Blob blob = image.getData();
-        response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-        response.getOutputStream().write(blob.getBytes(1, (int) blob.length()));
-        response.getOutputStream().close();
-    }
-
 
     @RequestMapping(value = "/increaseViewCount/{advertid}", method = RequestMethod.POST)
     public void viewCounter(@PathVariable("advertid") Integer advertid) {
@@ -130,7 +131,7 @@ public class MainController {
     @RequestMapping(value =  "/addAdvert", method = RequestMethod.GET)
     public String addAdvertPage(Model model) {
         model.addAttribute("advert", new Advert());
-        Map<String, String> newCategories = categories;
+        Map<String, String> newCategories =  new HashMap<>(categories);
         newCategories.remove("all");
         model.addAttribute("categories", newCategories);
         return "addAdvert";

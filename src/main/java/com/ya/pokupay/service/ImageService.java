@@ -9,6 +9,8 @@ import java.util.List;
 public interface ImageService {
     String save(List<MultipartFile> images, Integer advertid);
 
+    String delete(Integer advertId);
+
     List<Image> getImagesByAdvertId(Integer id);
 
     String getOneImageByAdvertId(Integer id) throws SQLException;

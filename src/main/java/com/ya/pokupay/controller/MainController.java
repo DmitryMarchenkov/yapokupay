@@ -1,5 +1,8 @@
 package com.ya.pokupay.controller;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ya.pokupay.model.Advert;
 import com.ya.pokupay.model.Image;
 import com.ya.pokupay.service.*;
@@ -54,7 +57,7 @@ public class MainController {
     private UserService userService;
 
     @RequestMapping(value =  "/", method = RequestMethod.GET)
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request) {
         String category = "Все категории";
         model.addAttribute("category", category);
         model.addAttribute("categories", categories);
@@ -74,9 +77,11 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping(value =  "/getAdverts/{category}/{orderByCriteria}", method = RequestMethod.GET)
-    public List<Advert> getAdverts(@PathVariable("category") String category, @PathVariable("orderByCriteria") String orderByCriteria) throws IOException {
-        List<Advert> advertList = this.advertService.listAdverts(category, orderByCriteria);
+    @RequestMapping(value =  "/getAdverts/{category}/{orderByCriteria}/{user}", method = RequestMethod.GET)
+    public List<Advert> getAdverts(@PathVariable("category") String category,
+                                   @PathVariable("orderByCriteria") String orderByCriteria,
+                                   @PathVariable("user") String user) throws IOException {
+        List<Advert> advertList = this.advertService.listAdverts(category, orderByCriteria, user);
         return advertList;
     }
 
@@ -139,16 +144,33 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping(value="/saveAdvert", method = RequestMethod.POST)
-    public Advert uploadPage (@RequestBody Advert obyavleniye) {
-        return this.advertService.addAdvert(obyavleniye);
+    public String saveAdvertPage (MultipartHttpServletRequest request) {
+        ObjectMapper mapper = new ObjectMapper();
+        Advert advert = null;
+        try {
+            advert = mapper.readValue(request.getParameter("advert"), Advert.class);
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("");
+        Integer advertid = this.advertService.addAdvert(advert).getId();
+
+        List<MultipartFile> files = request.getFiles("files");
+        return imageService.save(files, advertid);
+//        return null;
     }
 
     @ResponseBody
-    @RequestMapping(value="/uploadImages/{advertid}", method = RequestMethod.POST)
-    public String uploadImages (MultipartHttpServletRequest request,
-                                @PathVariable("advertid") Integer advertid) {
-        List<MultipartFile> files = request.getFiles("files");
-        return imageService.save(files, advertid);
+    @RequestMapping(value="/deleteAdvert/{advertId}", method = RequestMethod.GET)
+    public String deleteAdvertPage (@PathVariable("advertId") Integer advertId) {
+        String resultDelImg = this.imageService.delete(advertId);
+        String result = this.advertService.deleteAdvert(advertId);
+        return result;
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)

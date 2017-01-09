@@ -1,5 +1,10 @@
 $( document ).ready(function() {
-    getAdverts("Самые новые");
+    var path = window.location.pathname;
+    // window.ifUserPage = false;
+    // window.user = "not";
+    if (path === "/" || path === "/all") {
+        getAdverts("Самые новые");
+    }
 
     $(".dropdown-menu a").on("click", function () {
         var url = $(this).attr("href");
@@ -43,11 +48,17 @@ function getAdverts(sortBy) {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
 
-    var category = $('.dropdown-toggle p')[0].textContent;
 
+    var category;
+    var dropDown = $('.dropdown-toggle p')[0];
+    if (dropDown != null) {
+        category = dropDown.textContent;
+    } else {
+        category = "Все категории";
+    }
     $.ajax({
         type : 'GET',
-        url : '/getAdverts/' + category + '/' + sortBy,
+        url : '/getAdverts/' + category + '/' + sortBy + '/' + 'not',
         dataType : 'json',
         contentType : 'application/json',
         beforeSend: function(xhr) {
@@ -93,7 +104,7 @@ function showAdverts(data, ifSearch) {
     var page = $('.page');
     page.empty();
     if (data.length == 0) {
-        page.append("<p>В категории <strong>" + $('.dropdown-toggle p')[0].textContent + "</strong> ничего не найдено.</p>");
+            page.append("<p>В категории <strong>" + $('.dropdown-toggle p')[0].textContent + "</strong> ничего не найдено.</p>");
     } else {
         if (ifSearch) {
             page.append("<p>Результаты поиска в категории <strong>" + $('.dropdown-toggle p')[0].textContent + "</strong></p>");

@@ -29,7 +29,6 @@ $( document ).ready(function() {
 })
 
 function increaseViewCounter() {
-    // debugger;
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
 
@@ -38,24 +37,8 @@ function increaseViewCounter() {
     $.ajax({
         url : "/increaseViewCount/" + advertId,
         type: "POST",
-        // dataType: 'text',
-        // data: 'increaseViewCount',
-        // processData: false,
-        // contentType: false,
-        // cache: false,
         beforeSend: function(xhr) {
             xhr.setRequestHeader(header, token);
         },
-        // complete: function() {
-        //     console.log("Sent");
-        // },
-        // success: function (response) {
-        //     console.log("success");
-        //     console.log("response: " + response);
-        // },
-        // error: function (data) {
-        //     console.log("error");
-        //     console.log(data);
-        // }
     });
 }

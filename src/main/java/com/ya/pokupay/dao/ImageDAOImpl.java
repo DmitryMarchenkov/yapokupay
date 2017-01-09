@@ -1,6 +1,7 @@
 package com.ya.pokupay.dao;
 
 import com.ya.pokupay.model.Image;
+import org.apache.commons.io.FileUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,7 +38,7 @@ public class ImageDAOImpl implements ImageDAO {
             String location = imagesUrl + image.getUser() + "/" + image.getTitle();
             File pathFile = new File(location);
             if (!pathFile.exists()) {
-                pathFile.mkdir();
+                pathFile.mkdirs();
             }
 
             pathFile = new File(location + "/" + image.getName());
@@ -56,7 +57,41 @@ public class ImageDAOImpl implements ImageDAO {
         }
         tx.commit();
         session.close();
-        return "Files successfully uploaded";
+        return "Advert saved successfully";
+    }
+
+    @Override
+    public String delete(Integer advertId, String advertUsername, String advertTitle) {
+        String imagesUrl = generalProperties.getProperty("imagesUrl");
+        String location = imagesUrl + advertUsername + "/" + advertTitle;
+        File pathFile = new File(location);
+
+        if (pathFile.exists()) {
+            try {
+                FileUtils.deleteDirectory(pathFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        List<Image> imageList = getImagesList(advertId);
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for ( int i = 0; i < imageList.size(); i++ ) {
+            Image image = imageList.get(i);
+            session.delete(image);
+
+            if ( i % 20 == 0 ) {
+                session.flush();
+                session.clear();
+            }
+        }
+        tx.commit();
+        session.close();
+
+        return "Images deleted!";
     }
 
     @Override

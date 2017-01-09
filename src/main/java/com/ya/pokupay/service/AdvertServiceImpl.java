@@ -1,12 +1,10 @@
 package com.ya.pokupay.service;
 
-import java.io.File;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.ya.pokupay.model.Advert;
-import com.ya.pokupay.model.Image;
 import com.ya.pokupay.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,31 +20,14 @@ public class AdvertServiceImpl implements AdvertService {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private ImageService imageService;
-
     public void setAdvertDAO(AdvertDAO advertDAO) {
         this.advertDAO = advertDAO;
     }
 
     @Override
     @Transactional
-    public List<Advert> listAdverts(String category, String orderByCriteria) {
-        List<Advert> advertList = this.advertDAO.listAdverts(category, orderByCriteria);
-//        if (advertList.isEmpty()) return null;
-//
-//        for (int i = 0; i < advertList.size(); i++) {
-//            Advert advert = advertList.get(i);
-//            String advertImageBase64;
-//            Image advertImage = imageService.getOneImageByAdvertId(advert.getId());
-//            if (advertImage != null) {
-//                advertImageBase64 = advertImage.getBase64imageFile();
-//            } else {
-//                Image noImage = imageService.getOneImageByAdvertId(0);
-//                advertImageBase64 = noImage.getBase64imageFile();
-//            }
-//            advert.setBase64imageFile(advertImageBase64);
-//        }
+    public List<Advert> listAdverts(String category, String orderByCriteria, String user) {
+        List<Advert> advertList = this.advertDAO.listAdverts(category, orderByCriteria, user);
         return advertList;
     }
 
@@ -68,6 +49,11 @@ public class AdvertServiceImpl implements AdvertService {
         advert.setViewCounter(0);
 
         return this.advertDAO.addAdvert(advert);
+    }
+
+    @Override
+    public String deleteAdvert(Integer advertId) {
+        return this.advertDAO.deleteAdvert(advertId);
     }
 
     @Override

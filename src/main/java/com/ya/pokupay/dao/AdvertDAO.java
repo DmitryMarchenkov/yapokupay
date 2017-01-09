@@ -6,9 +6,11 @@ import com.ya.pokupay.model.Advert;
 
 public interface AdvertDAO {
 
-    List<Advert> listAdverts(String category, String orderByCriteria);
+    List<Advert> listAdverts(String category, String orderByCriteria, String user);
 
     Advert addAdvert(Advert a);
+
+    String deleteAdvert(Integer advertId);
 
     void updateAdvert(Advert a);
 

@@ -58,7 +58,7 @@
             </div>
         </div>
         <div id="searchLine">
-            <input type="text" placeholder="Что вы ищете?"/>
+            <input type="text" class="form-control" placeholder="Что вы ищете?"/>
         </div>
         <div id="chooseSort">
             <button class="btn" type="button">От дорогих к дешевым</button>

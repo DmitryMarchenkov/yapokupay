@@ -2,9 +2,11 @@ package com.ya.pokupay.model;
 
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="advert")

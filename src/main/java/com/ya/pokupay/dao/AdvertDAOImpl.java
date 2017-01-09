@@ -20,7 +20,7 @@ public class AdvertDAOImpl implements AdvertDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Advert> listAdverts(String category, String orderByCriteria) {
+    public List<Advert> listAdverts(String category, String orderByCriteria, String user) {
         Query query;
         Session session = this.sessionFactory.getCurrentSession();
         if (!category.equals("Все категории")) {
@@ -44,22 +44,27 @@ public class AdvertDAOImpl implements AdvertDAO {
             query.setParameter("category", category);
 
         } else {
-            switch (orderByCriteria) {
-                case "От дешевых к дорогим":
-                    query = session.createQuery("from Advert a order by a.price ASC");
-                    break;
-                case "От дорогих к дешевым":
-                    query = session.createQuery("from Advert a order by a.price DESC");
-                    break;
-                case "Самые новые":
-                    query = session.createQuery("from Advert a order by a.date DESC");
-                    break;
-                case "Самые старые":
-                    query = session.createQuery("from Advert a order by a.date ASC");
-                    break;
-                default:
-                    query = session.createQuery("from Advert a order by a.date DESC");
-                    break;
+            if (!user.equals("not")) {
+                query = session.createQuery("from Advert a where authorUsername = :user order by a.date DESC");
+                query.setParameter("user", user);
+            } else {
+                switch (orderByCriteria) {
+                    case "От дешевых к дорогим":
+                        query = session.createQuery("from Advert a order by a.price ASC");
+                        break;
+                    case "От дорогих к дешевым":
+                        query = session.createQuery("from Advert a order by a.price DESC");
+                        break;
+                    case "Самые новые":
+                        query = session.createQuery("from Advert a order by a.date DESC");
+                        break;
+                    case "Самые старые":
+                        query = session.createQuery("from Advert a order by a.date ASC");
+                        break;
+                    default:
+                        query = session.createQuery("from Advert a order by a.date DESC");
+                        break;
+                }
             }
         }
         List<Advert> advertsList = query.list();
@@ -72,6 +77,14 @@ public class AdvertDAOImpl implements AdvertDAO {
         session.persist(a);
         session.flush();
         return a;
+    }
+
+    @Override
+    public String deleteAdvert(Integer advertId) {
+        Session session = this.sessionFactory.openSession();
+        session.delete(getAdvertById(advertId));
+        session.flush();
+        return "Advert deleted!";
     }
 
     @Override

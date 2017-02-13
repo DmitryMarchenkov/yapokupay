@@ -52,8 +52,8 @@
                     <tr>
                         <td colspan="2" style="width: 100%;">
                             Для подтверждения регистрации перейдите по ссылке
-##                            <a href="http://localhost:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
-                            <a href="http://148.251.35.142:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
+##                            <a href="http://localhost:8888/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
+                            <a href="http://137.74.90.254:8080/confirmRegistration/${userName}/${token}"><i>Подтвердить регистрацию</i></a>
                         </td>
                     </tr>
                     </tbody>

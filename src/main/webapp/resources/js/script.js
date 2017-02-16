@@ -2,17 +2,19 @@ $( document ).ready(function() {
     var path = window.location.pathname;
     // window.ifUserPage = false;
     // window.user = "not";
-    if (path === "/" || path === "/all") {
+    // if (path === "/" || path === "/all") {
         getAdverts("Самые новые");
-    }
+    // }
 
     $(".dropdown-menu a").on("click", function () {
+        debugger;
         var url = $(this).attr("href");
         if (url == '#') {
             history.replaceState('', '', '/');
         } else {
             history.pushState('', '', url);
         }
+        // getAdverts("Самые новые");
     });
 
     $('#searchLine input').keyup(function(e){
@@ -47,7 +49,7 @@ $( document ).ready(function() {
 function getAdverts(sortBy) {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
-
+debugger;
 
     var category;
     var dropDown = $('.dropdown-toggle p')[0];
